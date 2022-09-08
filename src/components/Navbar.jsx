@@ -23,7 +23,7 @@ const Navbar = () => {
 				name='themes'
 				id='theme-modes'
 				className='select select-accent'>
-				<option value='light'>light</option>
+				<option value='light'>Change Theme</option>
 				<option value='dark'>dark</option>
 				<option value='night'>night</option>
 				<option value='synthwave'>synthwave</option>
