@@ -1,12 +1,25 @@
+import { useState } from 'react';
+
 const Navbar = () => {
+	const [selectedOptionTheme, setSelectedOptionTheme] = useState('night');
+
+	const handleOptionChange = e => {
+		setSelectedOptionTheme(e.target.value);
+	};
+
+	const dataTheme = document.querySelector('[data-theme]');
+	const currentTheme = dataTheme.attributes['data-theme'];
+	currentTheme.value = selectedOptionTheme;
+
 	return (
 		<nav className='flex justify-between items-center'>
 			<h1 className='text-4xl'>Todos Manager</h1>
 			<select
+				onChange={handleOptionChange}
+				value={selectedOptionTheme}
 				name='themes'
 				id='theme-modes'
-				className='select select-accent px-4 py-0'>
-				<option value=''>Change Theme</option>
+				className='select select-accent'>
 				<option value='light'>light</option>
 				<option value='dark'>dark</option>
 				<option value='night'>night</option>
