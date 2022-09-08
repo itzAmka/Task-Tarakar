@@ -1,7 +1,10 @@
-import { useState } from 'react';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 const Navbar = () => {
-	const [selectedOptionTheme, setSelectedOptionTheme] = useState('night');
+	const [selectedOptionTheme, setSelectedOptionTheme] = useLocalStorage(
+		'selectedOptionTheme',
+		'night',
+	);
 
 	const handleOptionChange = e => {
 		setSelectedOptionTheme(e.target.value);
