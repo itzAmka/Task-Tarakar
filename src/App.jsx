@@ -1,9 +1,10 @@
 import Container from './components/Container';
+import Navbar from './components/Navbar';
 
 const App = () => {
 	return (
 		<Container>
-			<h1 className='text-4xl'>Todos Manager</h1>
+			<Navbar />
 		</Container>
 	);
 };
