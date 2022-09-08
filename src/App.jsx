@@ -1,8 +1,10 @@
+import Container from './components/Container';
+
 const App = () => {
 	return (
-		<div>
-			<h1 className='text-3xl font-bold underline'>Todos Manager</h1>
-		</div>
+		<Container>
+			<h1 className='text-4xl'>Todos Manager</h1>
+		</Container>
 	);
 };
 
