@@ -1,9 +1,9 @@
-import todoData from './todosData';
-import { useLocalStorage } from '../../hooks/useLocalStorage';
+import { useContext } from 'react';
+import { TodosContext } from '../../context/TodosContext';
 import TodoItem from './TodoItem';
 
 const TodosList = () => {
-	const [todos, setTodos] = useLocalStorage('todos', todoData);
+	const { todos } = useContext(TodosContext);
 
 	return (
 		<ul className='flex flex-col gap-3 mt-5'>
