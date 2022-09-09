@@ -1,9 +1,16 @@
 import { MdDelete } from 'react-icons/Md';
 import { FaEdit } from 'react-icons/fa';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
+import { useContext } from 'react';
+import { TodosContext } from '../../context/TodosContext';
 
 const TodoItem = ({ todoItem }) => {
 	const { id, text, isCompleted, isEditing } = todoItem;
+	const { deleteTodo } = useContext(TodosContext);
+
+	const handleDeleteTodo = () => {
+		deleteTodo(id);
+	};
 
 	return (
 		<li className='border border-1 border-blue-500 p-2 rounded-md flex justify-between gap-10'>
@@ -28,7 +35,7 @@ const TodoItem = ({ todoItem }) => {
 				<button className='text-green-500 ml-1'>
 					<BsFillCheckCircleFill size={19} />
 				</button>
-				<button className='text-red-500'>
+				<button onClick={handleDeleteTodo} className='text-red-500'>
 					<MdDelete size={23} />
 				</button>
 			</span>
