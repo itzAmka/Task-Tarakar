@@ -6,10 +6,13 @@ import { TodosContext } from '../../context/TodosContext';
 
 const TodoItem = ({ todoItem }) => {
 	const { id, text, isCompleted, isEditing } = todoItem;
-	const { deleteTodo } = useContext(TodosContext);
+	const { deleteTodo, toggleCompleteTodo } = useContext(TodosContext);
 
 	const handleDeleteTodo = () => {
 		deleteTodo(id);
+	};
+	const handleToggleCompleteTodo = () => {
+		toggleCompleteTodo(id);
 	};
 
 	return (
@@ -32,7 +35,9 @@ const TodoItem = ({ todoItem }) => {
 					className='disabled:text-gray-500 text-yellow-500'>
 					<FaEdit size={20} />
 				</button>
-				<button className='text-green-500 ml-1'>
+				<button
+					onClick={handleToggleCompleteTodo}
+					className='text-green-500 ml-1'>
 					<BsFillCheckCircleFill size={19} />
 				</button>
 				<button onClick={handleDeleteTodo} className='text-red-500'>

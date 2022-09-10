@@ -26,8 +26,26 @@ export const TodosProvider = ({ children }) => {
 		setTodos(todos.filter(todoItem => todoItem.id !== id));
 	};
 
+	const toggleCompleteTodo = id => {
+		setTodos(currState => {
+			const todoItemToCompelete = currState.find(
+				todoItem => todoItem.id === id,
+			);
+
+			const notCompleteTodos = currState.filter(todoItem => todoItem.id !== id);
+			return [
+				...notCompleteTodos,
+				{
+					...todoItemToCompelete,
+					isCompleted: !todoItemToCompelete.isCompleted,
+				},
+			];
+		});
+	};
+
 	return (
-		<TodosContext.Provider value={{ todos, addTodo, deleteTodo }}>
+		<TodosContext.Provider
+			value={{ todos, addTodo, deleteTodo, toggleCompleteTodo }}>
 			{children}
 		</TodosContext.Provider>
 	);
