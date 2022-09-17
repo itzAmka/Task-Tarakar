@@ -11,13 +11,13 @@ export const TodosProvider = ({ children }) => {
 	const addTodo = text => {
 		setTodos(currState => {
 			return [
-				...currState,
 				{
 					id: uid(),
 					text,
 					isCompleted: false,
 					isEditing: false,
 				},
+				...currState,
 			];
 		});
 	};
@@ -34,11 +34,12 @@ export const TodosProvider = ({ children }) => {
 
 			const notCompleteTodos = currState.filter(todoItem => todoItem.id !== id);
 			return [
-				...notCompleteTodos,
 				{
 					...todoItemToCompelete,
 					isCompleted: !todoItemToCompelete.isCompleted,
 				},
+
+				...notCompleteTodos,
 			];
 		});
 	};
