@@ -59,6 +59,7 @@ const TodoItem = ({ todoItem }) => {
 								type='text'
 								id='editing-input'
 								className='w-full border border-blue-400 rounded-md px-2 text-black focus:outline-blue-500 sm:h-7 h-10'
+								aria-label='Edit Todo'
 								value={updatedText}
 								onChange={handleChange}
 							/>

@@ -56,6 +56,7 @@ const AddTodoForm = () => {
 				value={text}
 				onChange={handleChange}
 				className='input input-primary grow'
+				aria-label='Add Todo'
 			/>
 			<button className='btn btn-primary' disabled={disabled}>
 				Add Todo
