@@ -2,9 +2,13 @@ import { useContext, useState } from 'react';
 import { TodosContext } from '../../context/TodosContext';
 import { toast } from 'react-toastify';
 
+const errorId = 'custom-id-error';
+const successId = 'custom-id-success';
+
 const AddTodoForm = () => {
 	const { addTodo } = useContext(TodosContext);
 	const [text, setText] = useState('');
+	const [disabled, setDisabled] = useState(false);
 
 	const handleChange = e => {
 		setText(e.target.value);
@@ -16,14 +20,22 @@ const AddTodoForm = () => {
 		if (validateText(text)) {
 			toast.success('Added a new todo', {
 				position: 'top-center',
-				autoClose: 1000,
+				toastId: successId,
 			});
+			setDisabled(true);
 
 			addTodo(text);
 		} else {
-			toast.error('Please add a text field', { position: 'top-center' });
+			toast.error('Please add a text field', {
+				position: 'top-center',
+				toastId: errorId,
+			});
+			setDisabled(true);
 		}
 
+		setTimeout(() => {
+			setDisabled(false);
+		}, 1500);
 		setText('');
 	};
 
@@ -36,14 +48,18 @@ const AddTodoForm = () => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit} className='w-full flex gap-3 mt-12'>
+		<form
+			onSubmit={handleSubmit}
+			className='w-full flex gap-3 sm:flex-row flex-col mt-12'>
 			<input
 				type='text'
 				value={text}
 				onChange={handleChange}
 				className='input input-primary grow'
 			/>
-			<button className='btn btn-primary'>Add Todo</button>
+			<button className='btn btn-primary' disabled={disabled}>
+				Add Todo
+			</button>
 		</form>
 	);
 };

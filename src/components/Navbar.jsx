@@ -16,7 +16,7 @@ const Navbar = () => {
 
 	return (
 		<nav className='flex justify-between items-center'>
-			<h1 className='text-4xl'>Todos Manager</h1>
+			<h1 className='sm:text-4xl text-xl font-bold'>Todos Manager</h1>
 			<select
 				onChange={handleOptionChange}
 				value={selectedOptionTheme}

@@ -14,7 +14,11 @@ const App = () => {
 				<AddTodoForm />
 				<TodosList />
 			</Container>
-			<ToastContainer position='top-center' autoClose={2000} />
+			<ToastContainer
+				position='top-center'
+				autoClose={1000}
+				className='sm:mt-10 mt-5 px-5'
+			/>
 		</TodosProvider>
 	);
 };

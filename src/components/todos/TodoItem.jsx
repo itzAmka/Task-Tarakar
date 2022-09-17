@@ -52,13 +52,13 @@ const TodoItem = ({ todoItem }) => {
 	return (
 		<>
 			{!isCompleted && (
-				<li className='border border-1 border-blue-500 p-2 rounded-md flex justify-between items-center gap-10'>
+				<li className='border border-1 border-blue-500 p-2 rounded-md flex sm:flex-row flex-col justify-between items-center sm:gap-10 gap-5'>
 					{isEditing ? (
 						<form onSubmit={handleSubmit} className='w-full'>
 							<input
 								type='text'
 								id='editing-input'
-								className='w-full border border-blue-400 rounded-md px-2 text-black focus:outline-blue-500'
+								className='w-full border border-blue-400 rounded-md px-2 text-black focus:outline-blue-500 sm:h-7 h-10'
 								value={updatedText}
 								onChange={handleChange}
 							/>

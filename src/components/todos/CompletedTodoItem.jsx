@@ -15,7 +15,7 @@ const CompletedTodoItem = ({ completedTodoItem }) => {
 	};
 
 	return (
-		<li className='border border-1 border-blue-500 p-2 rounded-md flex justify-between item-center gap-10'>
+		<li className='border border-1 border-blue-500 p-2 rounded-md flex sm:flex-row flex-col justify-between items-center sm:gap-10 gap-5'>
 			<span className={`${isCompleted ? 'line-through' : ''}`}>{text}</span>
 			<span className='flex items-center gap-2'>
 				<button

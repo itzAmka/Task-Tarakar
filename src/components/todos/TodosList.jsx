@@ -32,7 +32,7 @@ const TodosList = () => {
 		<>
 			<ul className='flex flex-col gap-3 mt-5'>
 				{notCompletedTodos.length === 0 ? (
-					<li className='ml-1 text-xl'>No Tasks</li>
+					<li className='ml-1 text-xl'>No Tasks Todo</li>
 				) : (
 					notCompletedTodos.map(todoItem => (
 						<TodoItem key={todoItem.id} todoItem={todoItem} />
