@@ -44,9 +44,52 @@ export const TodosProvider = ({ children }) => {
 		});
 	};
 
+	const toggleEditTodo = id => {
+		setTodos(currState => {
+			const todoItemToCompelete = currState.find(
+				todoItem => todoItem.id === id,
+			);
+
+			const notCompleteTodos = currState.filter(todoItem => todoItem.id !== id);
+			return [
+				{
+					...todoItemToCompelete,
+					isEditing: !todoItemToCompelete.isEditing,
+				},
+
+				...notCompleteTodos,
+			];
+		});
+	};
+
+	const updateTodo = (id, updatedText) => {
+		setTodos(currState => {
+			const editingTodo = currState.find(todoItem => todoItem.id === id);
+
+			const notEditedTodos = currState.filter(todoItem => todoItem.id !== id);
+
+			return [
+				{
+					...editingTodo,
+					text: updatedText,
+					isEditing: false,
+				},
+
+				...notEditedTodos,
+			];
+		});
+	};
+
 	return (
 		<TodosContext.Provider
-			value={{ todos, addTodo, deleteTodo, toggleCompleteTodo }}>
+			value={{
+				todos,
+				addTodo,
+				deleteTodo,
+				toggleCompleteTodo,
+				toggleEditTodo,
+				updateTodo,
+			}}>
 			{children}
 		</TodosContext.Provider>
 	);

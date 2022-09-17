@@ -1,4 +1,4 @@
-import { MdDelete } from 'react-icons/Md';
+import { MdDelete, MdCancel } from 'react-icons/Md';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 import { useContext } from 'react';
 import { TodosContext } from '../../context/TodosContext';
@@ -16,13 +16,13 @@ const CompletedTodoItem = ({ completedTodoItem }) => {
 	};
 
 	return (
-		<li className='border border-1 border-blue-500 p-2 rounded-md flex justify-between gap-10'>
+		<li className='border border-1 border-blue-500 p-2 rounded-md flex justify-between item-center gap-10'>
 			<span className={`${isCompleted ? 'line-through' : ''}`}>{text}</span>
 			<span className='flex items-center gap-2'>
 				<button
 					onClick={handleToggleCompleteTodo}
-					className='text-green-500 ml-1'>
-					<BsFillCheckCircleFill size={19} />
+					className='text-red-300 ml-1'>
+					<MdCancel size={24} />
 				</button>
 				<button onClick={handleDeleteTodo} className='text-red-500'>
 					<MdDelete size={23} />
