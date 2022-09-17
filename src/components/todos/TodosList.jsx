@@ -39,6 +39,7 @@ const TodosList = () => {
 					))
 				)}
 			</ul>
+			<hr className='border-orange-500 border-2 rounded-lg mt-10 mx-1' />
 			<ul className='flex flex-col gap-3 mt-10'>
 				{completedTodos.length === 0 ? (
 					<li className='ml-1 text-xl'>No Completed Tasks</li>
