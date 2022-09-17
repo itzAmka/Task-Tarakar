@@ -1,5 +1,4 @@
 import { MdDelete, MdCancel } from 'react-icons/Md';
-import { BsFillCheckCircleFill } from 'react-icons/bs';
 import { useContext } from 'react';
 import { TodosContext } from '../../context/TodosContext';
 

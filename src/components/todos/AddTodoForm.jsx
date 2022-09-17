@@ -1,5 +1,6 @@
 import { useContext, useState } from 'react';
 import { TodosContext } from '../../context/TodosContext';
+import { toast } from 'react-toastify';
 
 const AddTodoForm = () => {
 	const { addTodo } = useContext(TodosContext);
@@ -11,8 +12,27 @@ const AddTodoForm = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		addTodo(text);
+
+		if (validateText(text)) {
+			toast.success('Added a new todo', {
+				position: 'top-center',
+				autoClose: 1000,
+			});
+
+			addTodo(text);
+		} else {
+			toast.error('Please add a text field', { position: 'top-center' });
+		}
+
 		setText('');
+	};
+
+	const validateText = text => {
+		if (text.length === '' || text.length === 0) {
+			return false;
+		} else if (text.length > 0) {
+			return true;
+		}
 	};
 
 	return (

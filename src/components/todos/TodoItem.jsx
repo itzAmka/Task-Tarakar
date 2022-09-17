@@ -3,6 +3,7 @@ import { FaEdit } from 'react-icons/fa';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 import { useContext, useState } from 'react';
 import { TodosContext } from '../../context/TodosContext';
+import { toast } from 'react-toastify';
 
 const TodoItem = ({ todoItem }) => {
 	const { id, text, isCompleted, isEditing } = todoItem;
@@ -24,8 +25,28 @@ const TodoItem = ({ todoItem }) => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
+		handleUpdateTodo();
+	};
 
-		updateTodo(id, updatedText);
+	const handleUpdateTodo = () => {
+		if (validateText(updatedText)) {
+			toast.success('Edited', {
+				position: 'top-center',
+				autoClose: 500,
+			});
+
+			updateTodo(id, updatedText);
+		} else {
+			toast.error('Please add a text field', { position: 'top-center' });
+		}
+	};
+
+	const validateText = text => {
+		if (text.length === '' || text.length === 0) {
+			return false;
+		} else if (text.length > 0) {
+			return true;
+		}
 	};
 
 	return (
@@ -49,7 +70,7 @@ const TodoItem = ({ todoItem }) => {
 						{isEditing ? (
 							<button
 								className='bg-yellow-500 text-black py-1 px-2 rounded-lg'
-								onClick={() => updateTodo(id, updatedText)}>
+								onClick={handleUpdateTodo}>
 								Save
 							</button>
 						) : (
