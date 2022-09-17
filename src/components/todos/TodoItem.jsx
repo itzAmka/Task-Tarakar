@@ -1,4 +1,4 @@
-import { MdDelete } from 'react-icons/Md';
+import { MdDelete } from 'react-icons/md';
 import { FaEdit } from 'react-icons/fa';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 import { useContext, useState } from 'react';

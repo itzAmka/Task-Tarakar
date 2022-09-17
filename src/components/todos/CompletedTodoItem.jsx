@@ -1,4 +1,4 @@
-import { MdDelete, MdCancel } from 'react-icons/Md';
+import { MdDelete, MdCancel } from 'react-icons/md';
 import { useContext } from 'react';
 import { TodosContext } from '../../context/TodosContext';
 
