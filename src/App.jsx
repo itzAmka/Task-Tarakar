@@ -1,10 +1,18 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Container from './components/Container';
-import Navbar from './components/Navbar';
+/* ---------- todos context --------- */
 import { TodosProvider } from './context/TodosContext';
+
+/* --------- react toastify --------- */
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
+
+/* ----------- components ----------- */
+import Container from './components/Container';
+import Navbar from './components/Navbar';
+
+/* -------------- pages ------------- */
 import Home from './pages/home';
+import Settings from './pages/settings';
 
 const App = () => {
 	return (
@@ -14,6 +22,7 @@ const App = () => {
 					<Navbar />
 					<Routes>
 						<Route path='/' element={<Home />} />
+						<Route path='/settings' element={<Settings />} />
 					</Routes>
 				</Container>
 				<ToastContainer
