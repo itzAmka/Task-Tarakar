@@ -1,4 +1,5 @@
-import { MdDelete, MdCancel } from 'react-icons/md';
+import { MdDelete } from 'react-icons/md';
+import { BsArrowUpCircleFill } from 'react-icons/bs';
 import { useContext } from 'react';
 import { TodosContext } from '../../context/TodosContext';
 
@@ -20,8 +21,9 @@ const CompletedTodoItem = ({ completedTodoItem }) => {
 			<span className='flex items-center gap-2'>
 				<button
 					onClick={handleToggleCompleteTodo}
-					className='text-red-300 ml-1'>
-					<MdCancel size={24} />
+					className='text-green-500 ml-1'
+				>
+					<BsArrowUpCircleFill size={21} />
 				</button>
 				<button onClick={handleDeleteTodo} className='text-red-500'>
 					<MdDelete size={23} />
