@@ -23,7 +23,7 @@ const ThemeOptions = () => {
 			id='theme-modes'
 			className='select select-accent'
 		>
-			<option value='light'>Change Theme</option>
+			<option value='light'>Light</option>
 			<option value='dark'>dark</option>
 			<option value='night'>night</option>
 			<option value='synthwave'>synthwave</option>

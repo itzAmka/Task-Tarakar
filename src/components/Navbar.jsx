@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { BsFillGearFill } from 'react-icons/bs';
 
 const Navbar = () => {
-	const [sidebarOpen, setSidebarOpen] = useState(true);
+	const [sidebarOpen, setSidebarOpen] = useState(false);
 
 	const openSidebar = () => {
 		setSidebarOpen(prevState => !prevState);
