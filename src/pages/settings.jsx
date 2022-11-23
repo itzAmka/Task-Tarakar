@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+import { RiArrowGoBackFill } from 'react-icons/ri';
 import ThemeOptions from '../components/ThemeOptions';
 
 const Settings = () => {
@@ -34,6 +36,14 @@ const Settings = () => {
 						</a>
 					</p>
 				</div>
+			</section>
+			<section className='text-center mt-10'>
+				<Link to='/'>
+					<button className='btn bg-slate-700'>
+						<RiArrowGoBackFill />
+						<span className='ml-2'>Go Back To Home</span>
+					</button>
+				</Link>
 			</section>
 		</div>
 	);
