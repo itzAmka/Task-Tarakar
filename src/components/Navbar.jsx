@@ -15,7 +15,7 @@ const Navbar = () => {
 
 	return (
 		<nav className='flex justify-between items-center relative'>
-			<Link to='/'>
+			<Link to='/' onClick={closeSidebar}>
 				<h1 className='sm:text-4xl text-xl font-bold'>Todos Manager</h1>
 			</Link>
 			<BsFillGearFill
@@ -24,21 +24,21 @@ const Navbar = () => {
 				size={30}
 			/>
 			<div
-				className={`absolute top-0 rounded-xl right-0 bg-slate-800 sm:w-3/12 w-2/4 h-48 transition duration-500 z-9 ${
+				className={`absolute top-0 rounded-xl right-0 bg-slate-800 p-4 pt-14 h-48s transition duration-500 z-9 ${
 					sidebarOpen ? 'scale-1' : 'scale-0 '
 				} `}
 			>
 				<ul
-					className='w-full h-full flex flex-col px-1 gap-6 items-center justify-center text-center'
+					className='flex flex-col px-1 gap-4 items-center justify-center text-center'
 					onClick={closeSidebar}
 				>
-					<li className='w-full outline outline-2 rounded btn-outline btn-info outline-blue-700 -rotate-12 shadow-lg'>
+					<li className='w-full px-4 py-0 outline outline-2 rounded btn-outline btn-secondary shadow-lg'>
 						<Link to='/' className='inline-block w-full'>
 							Home
 						</Link>
 					</li>
 					<li
-						className='w-full outline outline-2 rounded  btn-outline btn-info outline-blue-700 -rotate-12 shadow-lg'
+						className='w-full px-4 py-0 outline outline-2 rounded btn-outline btn-secondary shadow-lg'
 						onClick={closeSidebar}
 					>
 						<Link to='/settings' className='inline-block w-full'>
