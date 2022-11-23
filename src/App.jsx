@@ -23,6 +23,8 @@ const App = () => {
 					<Routes>
 						<Route path='/' element={<Home />} />
 						<Route path='/settings' element={<Settings />} />
+						<Route path='/sign-in' element={<Settings />} />
+						<Route path='/sign-up' element={<Settings />} />
 					</Routes>
 				</Container>
 				<ToastContainer
