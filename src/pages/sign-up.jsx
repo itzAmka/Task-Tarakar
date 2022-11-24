@@ -4,17 +4,64 @@ import { BsEyeFill, BsEyeSlashFill, BsPersonLinesFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { FcGoogle } from 'react-icons/fc';
+import { db, auth } from '../config/firebase.config';
+import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { doc, setDoc } from 'firebase/firestore';
 
 const SignUp = () => {
 	const [showPassword, setShowPassword] = useState(false);
+	const [formData, setFormData] = useState({
+		name: '',
+		email: '',
+		password: '',
+	});
+
+	const { name, email, password } = formData;
 
 	const toggleShowPassword = () => {
 		setShowPassword(prevState => !prevState);
 	};
 
-	const handleSubmit = e => {
+	const handleChange = e => {
+		setFormData(prevState => ({
+			...prevState,
+			[e.target.id]: e.target.value,
+		}));
+	};
+
+	const handleSubmit = async e => {
 		e.preventDefault();
-		console.log('submitted');
+
+		if (name !== '' || email !== '' || password !== '') {
+			// sign up user
+			try {
+				// create user with email and password
+				const userCredential = await createUserWithEmailAndPassword(
+					auth,
+					email,
+					password,
+				);
+
+				// get user from userCredential
+				const user = userCredential.user;
+
+				// update the user displayName
+				await updateProfile(user, { displayName: name });
+
+				// create refrence of the users document
+				const usersRef = doc(db, 'users', user.uid);
+
+				// save the new user to the database
+				await setDoc(usersRef, {
+					name: user.displayName,
+					email: user.email,
+				});
+
+				setFormData({ name: '', email: '', password: '' });
+			} catch (error) {
+				console.log(error.message);
+			}
+		}
 	};
 
 	return (
@@ -34,6 +81,9 @@ const SignUp = () => {
 							placeholder='Name'
 							autoComplete='username'
 							className='input input-secondary'
+							value={name}
+							onChange={handleChange}
+							required
 						/>
 					</div>
 					<div className='form-control gap-2 mb-4'>
@@ -46,6 +96,9 @@ const SignUp = () => {
 							placeholder='Email'
 							autoComplete='email'
 							className='input input-secondary'
+							value={email}
+							onChange={handleChange}
+							required
 						/>
 					</div>
 					<div className='form-control gap-2 mb-4'>
@@ -59,6 +112,9 @@ const SignUp = () => {
 								placeholder='Password'
 								autoComplete='new-password'
 								className='w-full input input-secondary'
+								value={password}
+								onChange={handleChange}
+								required
 							/>
 							<span className='absolute top-3 right-2 cursor-pointer'>
 								{showPassword ? (
