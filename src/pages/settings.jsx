@@ -1,8 +1,15 @@
 import { Link } from 'react-router-dom';
 import { RiArrowGoBackFill } from 'react-icons/ri';
+import { BiLogOut } from 'react-icons/bi';
+import { auth } from '../config/firebase.config';
+import { signOut } from 'firebase/auth';
 import ThemeOptions from '../components/ThemeOptions';
 
 const Settings = () => {
+	const handleLogout = async () => {
+		await signOut(auth);
+	};
+
 	return (
 		<div className='mt-12 p-4 border border-slate-500 rounded-lg'>
 			<section>
@@ -37,11 +44,17 @@ const Settings = () => {
 					</p>
 				</div>
 			</section>
-			<section className='text-center mt-10'>
+			<section className='text-center mt-10 flex justify-center gap-4 sm:flex-row flex-col'>
 				<Link to='/'>
-					<button className='btn bg-slate-700'>
-						<RiArrowGoBackFill />
+					<button className='btn bg-slate-700 btn-wide'>
+						<RiArrowGoBackFill size={18} />
 						<span className='ml-2'>Go Back To Home</span>
+					</button>
+				</Link>
+				<Link to='/sign-in' onClick={handleLogout}>
+					<button className='btn btn-error btn-wide'>
+						<BiLogOut size={20} />
+						<span className='ml-2'>Logout</span>
 					</button>
 				</Link>
 			</section>
