@@ -89,7 +89,8 @@ export const TodosProvider = ({ children }) => {
 				toggleCompleteTodo,
 				toggleEditTodo,
 				updateTodo,
-			}}>
+			}}
+		>
 			{children}
 		</TodosContext.Provider>
 	);
