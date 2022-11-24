@@ -8,8 +8,8 @@ export const useAuth = () => {
 	const [loading, setLoading] = useState(true);
 
 	useEffect(() => {
-		setLoading(false);
 		onAuthStateChanged(auth, user => {
+			setLoading(false);
 			if (user) {
 				setIsLoggedIn(true);
 				setUser(user);

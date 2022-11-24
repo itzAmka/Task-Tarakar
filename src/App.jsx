@@ -17,7 +17,10 @@ import SignIn from './pages/sign-in';
 import SignUp from './pages/sign-up';
 import ForgotPassword from './pages/forgot-password';
 
-// helpers
+/* --------- routes protection -------- */
+import AuthenticatedRoutes from './components/AuthenticatedRoutes';
+
+/* ------------- helpers ------------ */
 import { changeThemeMode } from './helpers/changeThemeMode';
 
 const App = () => {
@@ -29,10 +32,19 @@ const App = () => {
 				<Container>
 					<Navbar />
 					<Routes>
-						<Route path='/' element={<Home />} />
-						<Route path='/settings' element={<Settings />} />
+						{/* home route: only for authenticated users */}
+						<Route path='/' element={<AuthenticatedRoutes />}>
+							<Route path='/' element={<Home />} />
+						</Route>
+						{/* settings route: only for authenticated users */}
+						<Route path='/settings' element={<AuthenticatedRoutes />}>
+							<Route path='/settings' element={<Settings />} />
+						</Route>
+						{/* sign-in route: only for unauthenticated users */}
 						<Route path='/sign-in' element={<SignIn />} />
+						{/* sign-up route: only for unauthenticated user */}
 						<Route path='/sign-up' element={<SignUp />} />
+						{/* forgot-password route: authenticated and unauthenticated users can access to reset their password */}
 						<Route path='/forgot-password' element={<ForgotPassword />} />
 					</Routes>
 				</Container>
