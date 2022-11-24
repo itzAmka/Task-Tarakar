@@ -6,6 +6,8 @@ import { AiOutlineHome } from 'react-icons/ai';
 import { BiLogIn, BiLogOut } from 'react-icons/bi';
 import { MdAssignmentInd } from 'react-icons/md';
 import { useAuth } from '../hooks/useAuth';
+import { auth } from '../config/firebase.config';
+import { signOut } from 'firebase/auth';
 
 const Navbar = () => {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -17,6 +19,10 @@ const Navbar = () => {
 
 	const closeSidebar = () => {
 		setSidebarOpen(prevState => (prevState = false));
+	};
+
+	const handleLogout = async () => {
+		await signOut(auth);
 	};
 
 	return (
@@ -63,7 +69,11 @@ const Navbar = () => {
 								className='w-full px-2 py-1 outline outline-2 rounded btn-outline btn-secondary shadow-lg'
 								onClick={closeSidebar}
 							>
-								<Link to='/settings' className='w-full flex items-center gap-2'>
+								<Link
+									to='/sign-in'
+									onClick={handleLogout}
+									className='w-full flex items-center gap-2'
+								>
 									<span>
 										<BiLogOut />
 									</span>
