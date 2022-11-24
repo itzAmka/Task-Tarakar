@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BsEyeFill, BsEyeSlashFill, BsPersonLinesFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
-import { FcGoogle } from 'react-icons/fc';
 import { db, auth } from '../config/firebase.config';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
+import GoogleOAuth from '../components/GoogleOAuth';
 
 const SignUp = () => {
 	const [showPassword, setShowPassword] = useState(false);
@@ -15,6 +15,8 @@ const SignUp = () => {
 		email: '',
 		password: '',
 	});
+
+	const navigate = useNavigate();
 
 	const { name, email, password } = formData;
 
@@ -45,19 +47,22 @@ const SignUp = () => {
 				// get user from userCredential
 				const user = userCredential.user;
 
-				// update the user displayName
-				await updateProfile(user, { displayName: name });
+				if (user) {
+					// update the user displayName
+					await updateProfile(user, { displayName: name });
 
-				// create refrence of the users document
-				const usersRef = doc(db, 'users', user.uid);
+					// create refrence of the users document
+					const usersRef = doc(db, 'users', user.uid);
 
-				// save the new user to the database
-				await setDoc(usersRef, {
-					name: user.displayName,
-					email: user.email,
-				});
+					// save the new user to the database
+					await setDoc(usersRef, {
+						name: user.displayName,
+						email: user.email,
+					});
 
-				setFormData({ name: '', email: '', password: '' });
+					setFormData({ name: '', email: '', password: '' });
+					navigate('/');
+				}
 			} catch (error) {
 				console.log(error.message);
 			}
@@ -132,12 +137,7 @@ const SignUp = () => {
 			<div className='divider h-1 rounded-full my-10'>OR</div>
 
 			<section className='flex justify-center sm:gap-4 gap-6 sm:flex-row flex-col'>
-				<button className='btn btn-outline btn-primary sm:btn-wide btn-block'>
-					<span>Sign Up with</span>
-					<span className='ml-2'>
-						<FcGoogle size={40} />
-					</span>
-				</button>
+				<GoogleOAuth />
 				<Link
 					to='/sign-in'
 					className='btn btn-outline btn-info sm:btn-wide btn-block'

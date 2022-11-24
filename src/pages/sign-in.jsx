@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
-import { FcGoogle } from 'react-icons/fc';
 import { auth } from '../config/firebase.config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import GoogleOAuth from '../components/GoogleOAuth';
 
 const SignIn = () => {
 	const [showPassword, setShowPassword] = useState(false);
@@ -14,6 +14,8 @@ const SignIn = () => {
 		email: '',
 		password: '',
 	});
+
+	const navigate = useNavigate();
 
 	const { name, email, password } = formData;
 
@@ -46,6 +48,7 @@ const SignIn = () => {
 
 				if (user) {
 					setFormData({ name: '', email: '', password: '' });
+					navigate('/');
 				}
 			} catch (error) {
 				console.log(error.message);
@@ -106,12 +109,7 @@ const SignIn = () => {
 			<div className='divider h-1 rounded-full my-10'>OR</div>
 
 			<section className='flex justify-center sm:gap-4 gap-6 sm:flex-row flex-col'>
-				<button className='btn btn-outline btn-primary sm:btn-wide btn-block'>
-					<span>Sign In with</span>
-					<span className='ml-2'>
-						<FcGoogle size={40} />
-					</span>
-				</button>
+				<GoogleOAuth />
 				<Link
 					to='/sign-up'
 					className='btn btn-outline btn-info sm:btn-wide btn-block'
