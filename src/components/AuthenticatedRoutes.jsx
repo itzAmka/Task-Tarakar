@@ -1,12 +1,11 @@
 import { useAuth } from '../hooks/useAuth';
 import { Outlet, Navigate } from 'react-router-dom';
+import Spinner from './shared/Spinner';
 
 const AuthenticatedRoutes = () => {
 	const { isLoggedIn, loading } = useAuth();
 
-	if (loading) {
-		return <h3>Loading...</h3>;
-	}
+	if (loading) return <Spinner />;
 
 	return isLoggedIn ? <Outlet /> : <Navigate to='/sign-in' />;
 };
