@@ -26,9 +26,9 @@ const Navbar = () => {
 	};
 
 	return (
-		<nav className='flex justify-between items-center relative'>
+		<nav className='flex justify-between items-center relative py-4 sm:px-4 px-2 border rounded-lg bg-slate-800 text-white'>
 			<Link to='/' onClick={closeSidebar}>
-				<h1 className='sm:text-4xl text-xl font-bold'>Todos Manager</h1>
+				<h1 className='sm:text-4xl text-2xl font-bold'>Todos Manager</h1>
 			</Link>
 			<BsFillGearFill
 				onClick={openSidebar}
@@ -36,7 +36,7 @@ const Navbar = () => {
 				size={26}
 			/>
 			<div
-				className={`absolute top-0 rounded-xl right-0 bg-slate-800 p-4 pt-14 h-48s transition duration-500 z-9 ${
+				className={`absolute top-0 rounded-xl right-0 bg-slate-800 p-4 pt-14 border transition duration-500 z-9 ${
 					sidebarOpen ? 'scale-1' : 'scale-0 '
 				} `}
 			>
