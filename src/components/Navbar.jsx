@@ -5,11 +5,11 @@ import { FiSettings } from 'react-icons/fi';
 import { AiOutlineHome } from 'react-icons/ai';
 import { BiLogIn, BiLogOut } from 'react-icons/bi';
 import { MdAssignmentInd } from 'react-icons/md';
+import { useAuth } from '../hooks/useAuth';
 
 const Navbar = () => {
 	const [sidebarOpen, setSidebarOpen] = useState(false);
-	// temporary variable to determine if user is logged in or not
-	const [isLoggedIn, setIsLoggedIn] = useState(false);
+	const { isLoggedIn } = useAuth();
 
 	const openSidebar = () => {
 		setSidebarOpen(prevState => !prevState);
