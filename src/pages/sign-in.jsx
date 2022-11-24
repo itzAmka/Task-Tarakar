@@ -1,27 +1,63 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { BsEyeFill, BsEyeSlashFill, BsPersonLinesFill } from 'react-icons/bs';
+import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
 import { RiLockPasswordFill } from 'react-icons/ri';
 import { FcGoogle } from 'react-icons/fc';
+import { auth } from '../config/firebase.config';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 
 const SignIn = () => {
 	const [showPassword, setShowPassword] = useState(false);
+	const [formData, setFormData] = useState({
+		name: '',
+		email: '',
+		password: '',
+	});
+
+	const { name, email, password } = formData;
 
 	const toggleShowPassword = () => {
 		setShowPassword(prevState => !prevState);
 	};
 
-	const handleSubmit = e => {
+	const handleChange = e => {
+		setFormData(prevState => ({
+			...prevState,
+			[e.target.id]: e.target.value,
+		}));
+	};
+
+	const handleSubmit = async e => {
 		e.preventDefault();
-		console.log('submitted');
+
+		if (name !== '' || email !== '' || password !== '') {
+			// sign in user
+			try {
+				// sign in user with email and password
+				const userCredential = await signInWithEmailAndPassword(
+					auth,
+					email,
+					password,
+				);
+
+				// get user from userCredential
+				const user = userCredential.user;
+
+				if (user) {
+					setFormData({ name: '', email: '', password: '' });
+				}
+			} catch (error) {
+				console.log(error.message);
+			}
+		}
 	};
 
 	return (
 		<div className='mt-12 p-4 border border-slate-500 rounded-lg'>
 			<section>
 				<h1 className='text-2xl text-slate-400 text-center font-bold mb-6'>
-					Create a new account
+					Welcome back!
 				</h1>
 				<form onSubmit={handleSubmit}>
 					<div className='form-control gap-2 mb-4'>
@@ -34,6 +70,9 @@ const SignIn = () => {
 							placeholder='Email'
 							autoComplete='email'
 							className='input input-secondary'
+							value={email}
+							onChange={handleChange}
+							required
 						/>
 					</div>
 					<div className='form-control gap-2 mb-4'>
@@ -47,6 +86,9 @@ const SignIn = () => {
 								placeholder='Password'
 								autoComplete='new-password'
 								className='w-full input input-secondary'
+								value={password}
+								onChange={handleChange}
+								required
 							/>
 							<span className='absolute top-3 right-2 cursor-pointer'>
 								{showPassword ? (
