@@ -30,7 +30,7 @@ const TodosList = () => {
 
 	return (
 		<>
-			<ul className='flex flex-col gap-3 mt-5'>
+			<ul className='flex flex-col gap-3 mt-12'>
 				{notCompletedTodos.length === 0 ? (
 					<li className='ml-1 text-xl'>No Tasks Todo</li>
 				) : (
