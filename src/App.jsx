@@ -13,6 +13,8 @@ import Navbar from './components/Navbar';
 /* -------------- pages ------------- */
 import Home from './pages/home';
 import Settings from './pages/settings';
+import SignIn from './pages/sign-in';
+import SignUp from './pages/sign-up';
 
 const App = () => {
 	return (
@@ -23,8 +25,8 @@ const App = () => {
 					<Routes>
 						<Route path='/' element={<Home />} />
 						<Route path='/settings' element={<Settings />} />
-						<Route path='/sign-in' element={<Settings />} />
-						<Route path='/sign-up' element={<Settings />} />
+						<Route path='/sign-in' element={<SignIn />} />
+						<Route path='/sign-up' element={<SignUp />} />
 					</Routes>
 				</Container>
 				<ToastContainer
