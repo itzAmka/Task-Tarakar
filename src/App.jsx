@@ -15,6 +15,7 @@ import Home from './pages/home';
 import Settings from './pages/settings';
 import SignIn from './pages/sign-in';
 import SignUp from './pages/sign-up';
+import ForgotPassword from './pages/forgot-password';
 
 const App = () => {
 	return (
@@ -27,6 +28,7 @@ const App = () => {
 						<Route path='/settings' element={<Settings />} />
 						<Route path='/sign-in' element={<SignIn />} />
 						<Route path='/sign-up' element={<SignUp />} />
+						<Route path='/forgot-password' element={<ForgotPassword />} />
 					</Routes>
 				</Container>
 				<ToastContainer
