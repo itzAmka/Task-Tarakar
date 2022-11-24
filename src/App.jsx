@@ -17,7 +17,12 @@ import SignIn from './pages/sign-in';
 import SignUp from './pages/sign-up';
 import ForgotPassword from './pages/forgot-password';
 
+// helpers
+import { changeThemeMode } from './helpers/changeThemeMode';
+
 const App = () => {
+	changeThemeMode('selectedOptionTheme');
+
 	return (
 		<Router>
 			<TodosProvider>
