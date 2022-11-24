@@ -19,6 +19,7 @@ import ForgotPassword from './pages/forgot-password';
 
 /* --------- routes protection -------- */
 import AuthenticatedRoutes from './components/AuthenticatedRoutes';
+import UnAuthenticatedRoutes from './components/UnAuthenticatedRoutes';
 
 /* ------------- helpers ------------ */
 import { changeThemeMode } from './helpers/changeThemeMode';
@@ -41,9 +42,13 @@ const App = () => {
 							<Route path='/settings' element={<Settings />} />
 						</Route>
 						{/* sign-in route: only for unauthenticated users */}
-						<Route path='/sign-in' element={<SignIn />} />
+						<Route path='/sign-in' element={<UnAuthenticatedRoutes />}>
+							<Route path='/sign-in' element={<SignIn />} />
+						</Route>
 						{/* sign-up route: only for unauthenticated user */}
-						<Route path='/sign-up' element={<SignUp />} />
+						<Route path='/sign-up' element={<UnAuthenticatedRoutes />}>
+							<Route path='/sign-up' element={<SignUp />} />
+						</Route>
 						{/* forgot-password route: authenticated and unauthenticated users can access to reset their password */}
 						<Route path='/forgot-password' element={<ForgotPassword />} />
 					</Routes>
