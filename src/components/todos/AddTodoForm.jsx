@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { collection, addDoc } from 'firebase/firestore';
+import { db, auth } from '../../config/firebase.config';
 
 const errorId = 'custom-id-error';
 const successId = 'custom-id-success';
@@ -20,6 +22,7 @@ const AddTodoForm = () => {
 				position: 'top-center',
 				toastId: successId,
 			});
+			handleAddTodo();
 			setDisabled(true);
 		} else {
 			toast.error('Please add a text field', {
@@ -33,6 +36,15 @@ const AddTodoForm = () => {
 			setDisabled(false);
 		}, 1500);
 		setText('');
+	};
+
+	const handleAddTodo = async () => {
+		const todosRef = collection(db, 'todos');
+		await addDoc(todosRef, {
+			text,
+			isCompleted: false,
+			userRef: auth?.currentUser?.uid,
+		});
 	};
 
 	const validateText = text => {
