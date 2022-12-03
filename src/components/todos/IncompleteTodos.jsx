@@ -4,7 +4,7 @@ import { BsFillCheckCircleFill } from 'react-icons/bs';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { doc, updateDoc } from 'firebase/firestore';
-import { db, auth } from '../../config/firebase.config';
+import { db } from '../../config/firebase.config';
 
 const IncompleteTodos = ({ todo }) => {
 	const { id, text, isCompleted } = todo;
