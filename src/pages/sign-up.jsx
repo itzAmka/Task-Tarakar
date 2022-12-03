@@ -7,6 +7,7 @@ import { db, auth } from '../config/firebase.config';
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
 import { doc, setDoc } from 'firebase/firestore';
 import GoogleOAuth from '../components/GoogleOAuth';
+import { toast } from 'react-toastify';
 
 const SignUp = () => {
 	const [showPassword, setShowPassword] = useState(false);
@@ -64,7 +65,7 @@ const SignUp = () => {
 					navigate('/');
 				}
 			} catch (error) {
-				console.log(error.message);
+				toast.error('Something went wrong');
 			}
 		}
 	};

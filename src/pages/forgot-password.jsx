@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { MdEmail } from 'react-icons/md';
 import { auth } from '../config/firebase.config';
 import { sendPasswordResetEmail } from 'firebase/auth';
+import { toast } from 'react-toastify';
 
 const ForgotPassword = () => {
 	const [email, setEmail] = useState('');
@@ -19,9 +20,12 @@ const ForgotPassword = () => {
 		if (email !== '') {
 			try {
 				await sendPasswordResetEmail(auth, email);
+				toast.success('Check your email for password reset link', {
+					autoClose: 5000,
+				});
 				navigate('/sign-in');
 			} catch (error) {
-				console.log(error.message);
+				toast.error('Something went wrong');
 			}
 		}
 	};

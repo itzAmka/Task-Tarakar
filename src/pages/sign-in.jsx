@@ -6,6 +6,7 @@ import { RiLockPasswordFill } from 'react-icons/ri';
 import { auth } from '../config/firebase.config';
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import GoogleOAuth from '../components/GoogleOAuth';
+import { toast } from 'react-toastify';
 
 const SignIn = () => {
 	const [showPassword, setShowPassword] = useState(false);
@@ -51,7 +52,7 @@ const SignIn = () => {
 					navigate('/');
 				}
 			} catch (error) {
-				console.log(error.message);
+				toast.error('Email/Password is incorrect');
 			}
 		}
 	};
@@ -79,8 +80,16 @@ const SignIn = () => {
 						/>
 					</div>
 					<div className='form-control gap-2 mb-4'>
-						<label htmlFor='password' className='label justify-start gap-2'>
-							<RiLockPasswordFill /> Password
+						<label
+							htmlFor='password'
+							className='label justify-between items-center gap-2 '
+						>
+							<span className='flex gap-2 items-center'>
+								<RiLockPasswordFill /> Password
+							</span>
+							<span className='bg-black py-1 px-2 rounded-md text-white'>
+								<Link to='/forgot-password'>Forgot Password?</Link>
+							</span>
 						</label>
 						<div className='w-full relative'>
 							<input
