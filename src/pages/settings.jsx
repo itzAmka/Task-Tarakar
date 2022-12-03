@@ -30,13 +30,13 @@ const Settings = () => {
 				<div className='mt-4'>
 					<p className='text-xl text-slate-400 mb-2'>
 						Version:
-						<span className='text-sm text-slate-300 font-bold ml-2'>1.0.0</span>
+						<span className='text-sm text-slate-300 font-bold ml-2'>1.0.1</span>
 					</p>
 					<p className='text-xl text-slate-400'>
 						Developed and Designed by:
 						<a
 							className='btn-link font-bold ml-2'
-							href='https://github.com/AmkaE'
+							href='https://www.aminamka.com'
 							target='_blank'
 						>
 							AmkaE
