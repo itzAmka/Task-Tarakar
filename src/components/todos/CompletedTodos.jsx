@@ -3,7 +3,7 @@ import { BsArrowUpCircleFill } from 'react-icons/bs';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../config/firebase.config';
 
-const CompletedTodos = ({ todo }) => {
+const CompletedTodos = ({ todo, confirmDelete }) => {
 	const { id, text, isCompleted } = todo;
 
 	const todoRef = doc(db, 'todos', id);
@@ -22,7 +22,7 @@ const CompletedTodos = ({ todo }) => {
 					<BsArrowUpCircleFill size={21} onClick={handleComplete} />
 				</button>
 				<button className='text-red-500'>
-					<MdDelete size={23} />
+					<MdDelete size={23} onClick={() => confirmDelete(id)} />
 				</button>
 			</span>
 		</li>

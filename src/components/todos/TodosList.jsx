@@ -1,5 +1,12 @@
 import { useState, useEffect } from 'react';
-import { onSnapshot, collection, query, where } from 'firebase/firestore';
+import {
+	onSnapshot,
+	collection,
+	query,
+	where,
+	doc,
+	deleteDoc,
+} from 'firebase/firestore';
 import { db, auth } from '../../config/firebase.config';
 import Spinner from '../shared/Spinner';
 import IncompleteTodos from './IncompleteTodos';
@@ -9,6 +16,20 @@ const TodosList = () => {
 	const [loading, setLoading] = useState(true);
 	const [completedTodos, setCompletedTodos] = useState([]);
 	const [incompleteTodos, setIncompleteTodos] = useState([]);
+
+	const handleDelete = async id => {
+		const todoRef = doc(db, 'todos', id);
+		await deleteDoc(todoRef);
+	};
+
+	const confirmDelete = id => {
+		const confirm = window.confirm(
+			'Are you sure you want to delete this todo?',
+		);
+		if (confirm) {
+			handleDelete(id);
+		}
+	};
 
 	useEffect(() => {
 		setTimeout(() => {
@@ -46,17 +67,33 @@ const TodosList = () => {
 				<>
 					<div className='mt-12'>
 						<ul className='flex flex-col gap-3 mt-5'>
-							{incompleteTodos.map(todo => (
-								<IncompleteTodos key={todo.id} todo={todo} />
-							))}
+							{incompleteTodos.length === 0 ? (
+								<li className='ml-1 text-xl'>No Tasks Todo</li>
+							) : (
+								incompleteTodos.map(todo => (
+									<IncompleteTodos
+										key={todo.id}
+										todo={todo}
+										confirmDelete={confirmDelete}
+									/>
+								))
+							)}
 						</ul>
 
 						<hr className='border-orange-500 border-2 rounded-lg my-10 mx-1' />
 
 						<ul className='flex flex-col gap-3 mt-5'>
-							{completedTodos.map(todo => (
-								<CompletedTodos key={todo.id} todo={todo} />
-							))}
+							{completedTodos.length === 0 ? (
+								<li className='ml-1 text-xl'>No Completed Tasks</li>
+							) : (
+								completedTodos.map(todo => (
+									<CompletedTodos
+										key={todo.id}
+										todo={todo}
+										confirmDelete={confirmDelete}
+									/>
+								))
+							)}
 						</ul>
 					</div>
 				</>

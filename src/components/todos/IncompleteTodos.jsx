@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../config/firebase.config';
 
-const IncompleteTodos = ({ todo }) => {
+const IncompleteTodos = ({ todo, confirmDelete }) => {
 	const { id, text, isCompleted } = todo;
 	const [isEditing, setIsEditing] = useState(false);
 	const [newText, setNewText] = useState(text);
@@ -90,7 +90,7 @@ const IncompleteTodos = ({ todo }) => {
 					<BsFillCheckCircleFill size={19} onClick={handleComplete} />
 				</button>
 				<button className='text-red-500'>
-					<MdDelete size={23} />
+					<MdDelete size={23} onClick={() => confirmDelete(id)} />
 				</button>
 			</span>
 		</li>
