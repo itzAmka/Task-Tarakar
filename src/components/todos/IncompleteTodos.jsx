@@ -3,13 +3,22 @@ import { FaEdit } from 'react-icons/fa';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
+import { doc, updateDoc } from 'firebase/firestore';
+import { db, auth } from '../../config/firebase.config';
 
 const IncompleteTodos = ({ todo }) => {
-	const { id, text } = todo;
+	const { id, text, isCompleted } = todo;
 	const [isEditing, setIsEditing] = useState(false);
 	const [newText, setNewText] = useState(text);
 
-	const handleEdit = () => {
+	const todoRef = doc(db, 'todos', id);
+
+	const handleSubmit = async e => {
+		e.preventDefault();
+		await handleEdit();
+	};
+
+	const handleEdit = async () => {
 		setIsEditing(!isEditing);
 
 		if (isEditing) {
@@ -18,10 +27,20 @@ const IncompleteTodos = ({ todo }) => {
 					position: 'top-center',
 					autoClose: 500,
 				});
+
+				await updateDoc(todoRef, {
+					text: newText,
+				});
 			} else {
 				toast.error('failed to edit', { position: 'top-center' });
 			}
 		}
+	};
+
+	const handleComplete = async () => {
+		await updateDoc(todoRef, {
+			isCompleted: !isCompleted,
+		});
 	};
 
 	const handleChange = e => {
@@ -39,7 +58,7 @@ const IncompleteTodos = ({ todo }) => {
 	return (
 		<li className='border border-1 border-blue-500 p-2 rounded-md flex sm:flex-row flex-col justify-between items-center sm:gap-10 gap-5'>
 			{isEditing ? (
-				<form className='w-full'>
+				<form className='w-full' onSubmit={handleSubmit}>
 					<input
 						type='text'
 						id='editing-input'
@@ -68,7 +87,7 @@ const IncompleteTodos = ({ todo }) => {
 					</button>
 				)}
 				<button className='text-green-500 ml-1'>
-					<BsFillCheckCircleFill size={19} />
+					<BsFillCheckCircleFill size={19} onClick={handleComplete} />
 				</button>
 				<button className='text-red-500'>
 					<MdDelete size={23} />
