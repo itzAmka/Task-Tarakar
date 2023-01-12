@@ -1,6 +1,6 @@
 # [Todos-Manager](https://todos-manager-amkae.vercel.app/)
 
-Todos Manganer is a web app to that manges your daily task
+Todos Manganer is a web app that manges your daily task
 
 ## Table of contents
 
