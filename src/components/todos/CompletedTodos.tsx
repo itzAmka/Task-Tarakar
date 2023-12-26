@@ -2,14 +2,21 @@ import { MdDelete } from 'react-icons/md';
 import { BsArrowUpCircleFill } from 'react-icons/bs';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../config/firebase.config';
+import { ComponentProps } from 'react';
+import { Todo } from '../../zod/todosSchema';
 
-const CompletedTodos = ({ todo, confirmDelete }) => {
+type CompletedTodosProps = ComponentProps<'li'> & {
+	todo: Todo;
+	confirmDelete: (id: string) => void;
+}
+
+const CompletedTodos = ({ todo, confirmDelete }: CompletedTodosProps) => {
 	const { id, text, isCompleted } = todo;
 
-	const todoRef = doc(db, 'todos', id);
+	const todoDocRef = doc(db, 'todos', id);
 
 	const handleComplete = async () => {
-		await updateDoc(todoRef, {
+		await updateDoc(todoDocRef, {
 			isCompleted: !isCompleted,
 		});
 	};
