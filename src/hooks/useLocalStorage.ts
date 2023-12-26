@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-export const useLocalStorage = (key, initialValue) => {
-	const [value, setValue] = useState(() => {
+export const useLocalStorage = <T>(key: string, initialValue: T | (() => T)) => {
+	const [value, setValue] = useState<T>(() => {
 		// find the value from the localStorage
 		const jsonValue = localStorage.getItem(key);
 
@@ -12,7 +12,7 @@ export const useLocalStorage = (key, initialValue) => {
 
 		// but if the initial value is a function, invoke it.
 		if (typeof initialValue === 'function') {
-			return initialValue();
+			return (initialValue as () => T)();
 		}
 
 		// else if the initial value is is not a function and not found from the localStorage return it
