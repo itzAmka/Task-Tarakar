@@ -1,12 +1,14 @@
-export const changeThemeMode = (themeMode: string) => {
-	const dataTheme = document.querySelector('[data-theme]') as HTMLHtmlElement;
-	const currentTheme = dataTheme.attributes.getNamedItem('data-theme') as Attr;
+import { getCurrentTheme } from "./getCurrentTheme";
 
-	if (!currentTheme) return;
+export const changeThemeMode = (themeMode: string) => {
+	let currentTheme = getCurrentTheme();
+
 
 	const localStorageTheme = localStorage.getItem(themeMode);
 
+	console.log('localStorageTheme', localStorageTheme)
+
 	if (!localStorageTheme) return;
 
-	currentTheme.value = JSON.parse(localStorageTheme) || 'night';
+	currentTheme = JSON.parse(localStorageTheme) || 'night';
 };
