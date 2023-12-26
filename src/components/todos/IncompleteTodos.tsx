@@ -1,3 +1,5 @@
+import { type ComponentProps, type ChangeEvent, type FormEvent, } from 'react';
+
 import { MdDelete } from 'react-icons/md';
 import { FaEdit } from 'react-icons/fa';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
@@ -5,15 +7,21 @@ import { useState } from 'react';
 import { toast } from 'react-toastify';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../config/firebase.config';
+import { Todo } from '../../zod/todosSchema';
 
-const IncompleteTodos = ({ todo, confirmDelete }) => {
+type IncompleteTodosProps = ComponentProps<'li'> & {
+	todo: Todo;
+	confirmDelete: (id: string) => void;
+}
+
+const IncompleteTodos = ({ todo, confirmDelete }: IncompleteTodosProps) => {
 	const { id, text, isCompleted } = todo;
 	const [isEditing, setIsEditing] = useState(false);
 	const [newText, setNewText] = useState(text);
 
 	const todoRef = doc(db, 'todos', id);
 
-	const handleSubmit = async e => {
+	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		await handleEdit();
 	};
@@ -43,12 +51,12 @@ const IncompleteTodos = ({ todo, confirmDelete }) => {
 		});
 	};
 
-	const handleChange = e => {
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setNewText(e.target.value);
 	};
 
-	const validateText = text => {
-		if (text.length === '' || text.length === 0) {
+	const validateText = (text: string) => {
+		if (!text || text.length === 0) {
 			return false;
 		} else if (text.length > 0) {
 			return true;

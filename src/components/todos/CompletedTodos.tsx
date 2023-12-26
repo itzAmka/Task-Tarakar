@@ -1,8 +1,9 @@
+import { type ComponentProps } from 'react';
+
 import { MdDelete } from 'react-icons/md';
 import { BsArrowUpCircleFill } from 'react-icons/bs';
 import { doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../config/firebase.config';
-import { ComponentProps } from 'react';
 import { Todo } from '../../zod/todosSchema';
 
 type CompletedTodosProps = ComponentProps<'li'> & {
