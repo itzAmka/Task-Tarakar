@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type ChangeEvent, type FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MdEmail } from 'react-icons/md';
 import { auth } from '../config/firebase.config';
@@ -10,11 +10,19 @@ const ForgotPassword = () => {
 
 	const navigate = useNavigate();
 
-	const handleChange = e => {
-		setEmail(e.target.value);
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const value = e.target.value;
+
+		if (value.length < 0) { 
+			toast.error('Please enter a valid email');
+
+			return;
+		}
+		
+		setEmail(value);
 	};
 
-	const handleSubmit = async e => {
+	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		if (email !== '') {
