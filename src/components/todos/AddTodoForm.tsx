@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type ChangeEvent, type FormEvent, useState } from 'react';
 import { toast } from 'react-toastify';
 import { collection, addDoc } from 'firebase/firestore';
 import { db, auth } from '../../config/firebase.config';
@@ -10,11 +10,11 @@ const AddTodoForm = () => {
 	const [text, setText] = useState('');
 	const [disabled, setDisabled] = useState(false);
 
-	const handleChange = e => {
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setText(e.target.value);
 	};
 
-	const handleSubmit = e => {
+	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		if (validateText(text)) {
@@ -47,8 +47,8 @@ const AddTodoForm = () => {
 		});
 	};
 
-	const validateText = text => {
-		if (text.length === '' || text.length === 0) {
+	const validateText = (text: string) => {
+		if (!text || text.length === 0) {
 			return false;
 		} else if (text.length > 0) {
 			return true;
