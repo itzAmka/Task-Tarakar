@@ -5,22 +5,22 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
 /* ----------- components ----------- */
-import Container from './components/Container';
-import Navbar from './components/Navbar';
+import Container from './components/Container.jsx';
+import Navbar from './components/Navbar.jsx';
 
 /* -------------- pages ------------- */
-import Home from './pages/home';
-import Settings from './pages/settings';
-import SignIn from './pages/sign-in';
-import SignUp from './pages/sign-up';
-import ForgotPassword from './pages/forgot-password';
+import Home from './pages/home.tsx';
+import Settings from './pages/settings.tsx';
+import SignIn from './pages/sign-in.tsx';
+import SignUp from './pages/sign-up.tsx';
+import ForgotPassword from './pages/forgot-password.tsx';
 
 /* --------- routes protection -------- */
-import AuthenticatedRoutes from './components/AuthenticatedRoutes';
-import UnAuthenticatedRoutes from './components/UnAuthenticatedRoutes';
+import AuthenticatedRoutes from './components/AuthenticatedRoutes.jsx';
+import UnAuthenticatedRoutes from './components/UnAuthenticatedRoutes.jsx';
 
 /* ------------- helpers ------------ */
-import { changeThemeMode } from './helpers/changeThemeMode';
+import { changeThemeMode } from './helpers/changeThemeMode.js';
 
 const App = () => {
 	changeThemeMode('selectedOptionTheme');
