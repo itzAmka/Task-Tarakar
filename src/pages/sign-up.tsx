@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type ChangeEvent, type FormEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BsEyeFill, BsEyeSlashFill, BsPersonLinesFill } from 'react-icons/bs';
 import { MdEmail } from 'react-icons/md';
@@ -25,14 +25,14 @@ const SignUp = () => {
 		setShowPassword(prevState => !prevState);
 	};
 
-	const handleChange = e => {
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setFormData(prevState => ({
 			...prevState,
 			[e.target.id]: e.target.value,
 		}));
 	};
 
-	const handleSubmit = async e => {
+	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 
 		if (name !== '' || email !== '' || password !== '') {
