@@ -1,7 +1,7 @@
 import { ComponentProps } from "react";
 
 type SpinnerProps = ComponentProps<"div"> & {
-	bgColor: string;
+	bgColor?: string;
 }
 
 const Spinner = ({ bgColor }: SpinnerProps) => {
