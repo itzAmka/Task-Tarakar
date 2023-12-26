@@ -1,11 +1,11 @@
-import { getCurrentTheme } from "./getCurrentTheme";
+import { getCurrentTheme } from '@helpers/getCurrentTheme'
 
 export const changeThemeMode = (themeMode: string) => {
-	let currentTheme = getCurrentTheme();
+  let currentTheme = getCurrentTheme()
 
-	const localStorageTheme = localStorage.getItem(themeMode);
+  const localStorageTheme = localStorage.getItem(themeMode)
 
-	if (!localStorageTheme) return;
+  if (!localStorageTheme) return
 
-	currentTheme = JSON.parse(localStorageTheme) || 'night';
-};
+  currentTheme = JSON.parse(localStorageTheme) || 'night'
+}

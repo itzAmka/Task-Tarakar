@@ -1,13 +1,13 @@
-import AddTodoForm from '../components/todos/AddTodoForm';
-import TodosList from '../components/todos/TodosList';
+import AddTodoForm from '@components/todos/AddTodoForm'
+import TodosList from '@components/todos/TodosList'
 
 const Home = () => {
-	return (
-		<>
-			<AddTodoForm />
-			<TodosList />
-		</>
-	);
-};
+  return (
+    <>
+      <AddTodoForm />
+      <TodosList />
+    </>
+  )
+}
 
-export default Home;
+export default Home
