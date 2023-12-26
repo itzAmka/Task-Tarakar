@@ -1,19 +1,23 @@
-import { useLocalStorage } from '../hooks/useLocalStorage';
+import { ChangeEvent, useEffect } from 'react';
+import { setCurrentTheme } from '../helpers';
+import { useLocalStorage } from '../hooks';
 
 const ThemeOptions = () => {
-	const [selectedOptionTheme, setSelectedOptionTheme] = useLocalStorage(
+	const [selectedOptionTheme, setSelectedOptionTheme] = useLocalStorage<string>(
 		'selectedOptionTheme',
 		'night',
 	);
 
-	const handleOptionChange = e => {
-		setSelectedOptionTheme(e.target.value);
+	const handleOptionChange = (e: ChangeEvent<HTMLSelectElement>) => {
+		const target = e.target as HTMLSelectElement;
+		const value = target.value;
+		
+		setSelectedOptionTheme((value as string));
 	};
 
-	// munipulate DOM
-	const dataTheme = document.querySelector('[data-theme]');
-	const currentTheme = dataTheme.attributes['data-theme'];
-	currentTheme.value = selectedOptionTheme;
+	useEffect(() => { 
+		setCurrentTheme(selectedOptionTheme);
+	}, [selectedOptionTheme]);
 
 	return (
 		<select
