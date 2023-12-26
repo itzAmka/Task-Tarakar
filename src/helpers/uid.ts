@@ -37,7 +37,7 @@ const lowerCaseLetters = letters.map(letter => letter.toLowerCase());
 const upperCaseLetters = letters.map(letter => letter.toUpperCase());
 
 // create a function to randomize array's items position
-const shuffleArray = arr => {
+const shuffleArray = (arr: (string | number)[]) => {
 	// returns a copy of the array that was passed as argument with random positioned.
 	return [...arr].sort(() => Math.random() - 0.5);
 };
