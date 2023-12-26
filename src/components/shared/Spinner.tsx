@@ -1,4 +1,10 @@
-const Spinner = ({ bgColor }) => {
+import { ComponentProps } from "react";
+
+type SpinnerProps = ComponentProps<"div"> & {
+	bgColor: string;
+}
+
+const Spinner = ({ bgColor }: SpinnerProps) => {
 	return (
 		<div className='h-full grid place-items-center mt-12'>
 			<div
