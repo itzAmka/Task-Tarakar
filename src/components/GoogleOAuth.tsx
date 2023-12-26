@@ -28,8 +28,9 @@ const GoogleOAuth = () => {
 			if (user) {
 				navigate('/');
 			}
-		} catch (error) {
-			console.log(error.message);
+		} catch (error: unknown) {
+
+			console.log((error as Error).message);
 		}
 	};
 	return (
