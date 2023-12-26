@@ -11,18 +11,25 @@ import { db, auth } from '../../config/firebase.config';
 import Spinner from '../shared/Spinner';
 import IncompleteTodos from './IncompleteTodos';
 import CompletedTodos from './CompletedTodos';
+import { Todo } from '../../zod/todosSchema';
+
+type DocData = {
+	text: string;
+	isCompleted: boolean;
+	userRef: string;
+}
 
 const TodosList = () => {
 	const [loading, setLoading] = useState(true);
-	const [completedTodos, setCompletedTodos] = useState([]);
-	const [incompleteTodos, setIncompleteTodos] = useState([]);
+	const [completedTodos, setCompletedTodos] = useState<Todo[]>([]);
+	const [incompleteTodos, setIncompleteTodos] = useState<Todo[]>([]);
 
-	const handleDelete = async id => {
+	const handleDelete = async (id: string) => {
 		const todoRef = doc(db, 'todos', id);
 		await deleteDoc(todoRef);
 	};
 
-	const confirmDelete = id => {
+	const confirmDelete = (id: string) => {
 		const confirm = window.confirm(
 			'Are you sure you want to delete this todo?',
 		);
@@ -44,13 +51,13 @@ const TodosList = () => {
 			where('userRef', '==', auth?.currentUser?.uid),
 		);
 		onSnapshot(q, querySnapshot => {
-			const _completedTodos = [];
-			const _incompleteTodos = [];
+			const _completedTodos: Todo[] = []
+			const _incompleteTodos: Todo[]  = [];
 			querySnapshot.forEach(doc => {
 				if (doc.data().isCompleted) {
-					_completedTodos.push({ ...doc.data(), id: doc.id });
+					_completedTodos.push({ ...(doc.data() as DocData), id: doc.id });
 				} else {
-					_incompleteTodos.push({ ...doc.data(), id: doc.id });
+					_incompleteTodos.push({ ...(doc.data() as DocData), id: doc.id });
 				}
 			});
 
