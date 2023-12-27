@@ -1,3 +1,3 @@
-export * from './DashboardHeader'
-export * from './DashboardTaskSummary'
-export * from './DashboardCategoryOverview'
+export * from './DashboardHeader.tsx'
+export * from './DashboardTaskSummary.tsx'
+export * from './DashboardCategoryOverview.tsx'

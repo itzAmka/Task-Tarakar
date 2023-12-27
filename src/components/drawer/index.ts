@@ -1,2 +1,2 @@
-export * from './DrawerNav'
-export * from './DrawerSideNav'
+export * from './DrawerNav.tsx'
+export * from './DrawerSideNav.tsx'
