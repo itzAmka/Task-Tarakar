@@ -30,7 +30,7 @@
       "@hooks/*": ["src/hooks/*"],
       "@pages/*": ["src/pages/*"],
       "@zod/*": ["src/zod/*"],
-      "@layouts/*": ["src/layout/*"]
+      "@layouts/*": ["src/layouts/*"]
     }
   },
   "include": ["src"],
