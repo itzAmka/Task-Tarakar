@@ -1,7 +1,7 @@
 import { FaBars } from 'react-icons/fa'
 import Logo from '@components/shared/Logo'
 
-const DrawerNav = () => {
+export const DrawerNav = () => {
   return (
     <div>
       <nav className='w-full navbar bg-base-200 text-base-content'>
@@ -23,5 +23,3 @@ const DrawerNav = () => {
     </div>
   )
 }
-
-export default DrawerNav

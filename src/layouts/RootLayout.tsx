@@ -1,8 +1,7 @@
 import { useRef, type ComponentProps } from 'react'
 import { Outlet } from 'react-router-dom'
-import DrawerNav from '@components/DrawerNav'
+import { DrawerNav, DrawerSideNav } from '@components/drawer'
 import AuthenticatedRoutes from '@components/AuthenticatedRoutes'
-import DrawerSideNav from '@components/DrawerSideNav'
 
 type RootLayoutProps = ComponentProps<'div'>
 

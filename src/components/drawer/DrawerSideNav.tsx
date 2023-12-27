@@ -8,7 +8,7 @@ type DrawerSideNavProps = ComponentProps<'div'> & {
   closeDrawer?: () => void
 }
 
-const DrawerSideNav = ({ closeDrawer }: DrawerSideNavProps) => {
+export const DrawerSideNav = ({ closeDrawer }: DrawerSideNavProps) => {
   return (
     <>
       <ul className='menu gap-2 p-4 w-fit min-h-full bg-base-300 text-base-content'>
@@ -44,5 +44,3 @@ const DrawerSideNav = ({ closeDrawer }: DrawerSideNavProps) => {
     </>
   )
 }
-
-export default DrawerSideNav
