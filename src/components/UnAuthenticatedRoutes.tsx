@@ -1,8 +1,11 @@
-import { Navigate, useLocation, Outlet } from 'react-router-dom'
+import { Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from '@hooks/useAuth'
 import Spinner from '@components/shared/Spinner'
+import { ComponentProps } from 'react'
 
-const UnAuthenticatedRoutes = () => {
+type UnAuthenticatedRoutesProps = ComponentProps<'div'>
+
+const UnAuthenticatedRoutes = ({ children }: UnAuthenticatedRoutesProps) => {
   const { isLoggedIn, loading } = useAuth()
 
   const location = useLocation()
@@ -16,7 +19,7 @@ const UnAuthenticatedRoutes = () => {
   if (isLoggedIn && (signUpPath || signInPath)) {
     return <Navigate to='/' replace={true} />
   } else {
-    return <Outlet />
+    return children
   }
 }
 

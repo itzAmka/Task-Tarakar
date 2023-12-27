@@ -1,13 +1,16 @@
-import { Outlet, Navigate } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 import { useAuth } from '@hooks/useAuth'
 import Spinner from '@components/shared/Spinner'
+import { ComponentProps } from 'react'
 
-const AuthenticatedRoutes = () => {
+type AuthenticatedRoutesProps = ComponentProps<'div'>
+
+const AuthenticatedRoutes = ({ children }: AuthenticatedRoutesProps) => {
   const { isLoggedIn, loading } = useAuth()
 
   if (loading) return <Spinner bgColor='bg-green-300' />
 
-  return isLoggedIn ? <Outlet /> : <Navigate to='/sign-in' />
+  return isLoggedIn ? children : <Navigate to='/sign-in' />
 }
 
 export default AuthenticatedRoutes
