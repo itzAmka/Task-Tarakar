@@ -1,4 +1,5 @@
 import { ComponentProps } from 'react'
+import { Link } from 'react-router-dom'
 
 export type TCategory = {
   id: string
@@ -27,7 +28,9 @@ export const TaskCategoryItem = ({ category }: TaskCategoryItemProps) => {
           </div>
 
           <div className='card-actions'>
-            <button className='btn btn-primary'>See tasks</button>
+            <Link to={`/tasks/${category.id}`} className='btn btn-primary'>
+              See tasks
+            </Link>
           </div>
         </div>
       </div>
