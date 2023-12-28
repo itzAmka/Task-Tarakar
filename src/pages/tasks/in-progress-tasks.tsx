@@ -1,5 +1,6 @@
 import { useLoaderData } from 'react-router-dom'
 import { Task } from '@zod/tasksSchema'
+import { InProgressTaskList } from '@components/tasks'
 
 const InProgressTasks = () => {
   const inProgressTasks = useLoaderData() as Task[]
@@ -16,13 +17,7 @@ const InProgressTasks = () => {
           </p>
         </div>
 
-        <ul className='grid grid-col-1'>
-          {inProgressTasks.map((task) => (
-            <li className='card bg-neutral text-neutral-content' key={task.id}>
-              <div className='card-body'>{task.title}</div>
-            </li>
-          ))}
-        </ul>
+        <InProgressTaskList inProgressTasks={inProgressTasks} />
       </section>
     </>
   )

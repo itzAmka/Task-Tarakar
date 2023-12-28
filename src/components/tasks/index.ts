@@ -1,3 +1,5 @@
 export * from './TasksNav.tsx'
 export * from './TaskCategoryList.tsx'
 export * from './TaskCategoryItem.tsx'
+export * from './InProgressTaskList.tsx'
+export * from './InProgressTaskItem.tsx'
