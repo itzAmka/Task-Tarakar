@@ -1,11 +1,15 @@
 import { collection, getDocs, query, orderBy } from 'firebase/firestore'
-import { type LoaderFunction } from 'react-router-dom'
-import { db } from '@config/firebase.config'
+import { type LoaderFunction, redirect } from 'react-router-dom'
+import { auth, db } from '@config/firebase.config'
 import { type Category } from '@zod/categoriesSchema'
 
 export const tasksCategoryLoader: LoaderFunction<
   Category[]
 > = async (): Promise<Category[]> => {
+  if (!auth.currentUser) {
+    throw redirect('/sign-in')
+  }
+
   const categoriesColRef = collection(db, 'categories')
 
   let tasksCategories: Category[] = []
