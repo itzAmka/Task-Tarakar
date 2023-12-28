@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom'
-import { TasksNav } from '@components/tasks'
+import { TaskCategoryList } from '@components/tasks'
 
 const Tasks = () => {
   return (
     <div className='flex flex-col gap-16'>
-      <TasksNav />
+      <TaskCategoryList />
       <Outlet />
     </div>
   )
