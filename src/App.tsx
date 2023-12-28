@@ -13,9 +13,10 @@ import AuthLayout from '@layouts/AuthLayout.tsx'
 
 /* -------------- pages ------------- */
 import Dashboard from '@pages/dashboard.tsx'
-import Tasks from '@pages/tasks/tasks'
-import CompletedTasks from '@pages/tasks/completed-tasks'
-import InProgressTasks from '@pages/tasks/in-progress-tasks'
+import Tasks from '@pages/tasks/tasks.tsx'
+import TasksCategory from '@pages/tasks/tasks-category.tsx'
+import CompletedTasks from '@pages/tasks/completed-tasks.tsx'
+import InProgressTasks from '@pages/tasks/in-progress-tasks.tsx'
 import Settings from '@pages/settings.tsx'
 import SignIn from '@pages/sign-in.tsx'
 import SignUp from '@pages/sign-up.tsx'
@@ -38,8 +39,12 @@ const router = createBrowserRouter([
       },
       {
         path: 'tasks',
-        element: <Tasks />,
+        element: <TasksCategory />,
         loader: tasksCategoryLoader,
+      },
+      {
+        path: 'tasks/:categoryId',
+        element: <Tasks />,
         children: [
           {
             path: '',

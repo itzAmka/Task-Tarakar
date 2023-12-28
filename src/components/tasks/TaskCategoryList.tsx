@@ -1,4 +1,4 @@
-import { TaskCategoryItem, TCategory } from '@components/tasks'
+import { TaskCategoryItem } from '@components/tasks'
 import { Category } from '@zod/categoriesSchema'
 import { ComponentProps } from 'react'
 

@@ -1,13 +1,13 @@
-import { Outlet, useLoaderData } from 'react-router-dom'
-import { TaskCategoryList } from '@components/tasks'
-import { Category } from '@zod/categoriesSchema'
+import { Outlet, useParams } from 'react-router-dom'
+import { TasksNav } from '@components/tasks'
 
 const Tasks = () => {
-  const tasksCategories = useLoaderData() as Category[]
+  const params = useParams()
 
   return (
     <div className='flex flex-col gap-16'>
-      <TaskCategoryList tasksCategories={tasksCategories} />
+      {/* TODO: breadcrumbs */}
+      <TasksNav categoryId={params.categoryId} />
       <Outlet />
     </div>
   )
