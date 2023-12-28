@@ -3,7 +3,9 @@ import { type LoaderFunction } from 'react-router-dom'
 import { db } from '@config/firebase.config'
 import { type Category } from '@zod/categoriesSchema'
 
-export const tasksCategoryLoader: LoaderFunction<Category[]> = async () => {
+export const tasksCategoryLoader: LoaderFunction<
+  Category[]
+> = async (): Promise<Category[]> => {
   const categoriesColRef = collection(db, 'categories')
 
   let tasksCategories: Category[] = []
