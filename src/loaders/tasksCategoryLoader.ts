@@ -13,7 +13,7 @@ export const tasksCategoryLoader: LoaderFunction<Category[]> = async () => {
   const querySnapshot = await getDocs(tasksCategoriesQuery)
 
   querySnapshot.forEach((doc) => {
-    const task: Category = {
+    const tasksCategory: Category = {
       id: doc.id,
       title: doc.data().title,
       description: doc.data().description,
@@ -22,7 +22,7 @@ export const tasksCategoryLoader: LoaderFunction<Category[]> = async () => {
       updatedAt: doc.data().updatedAt,
     }
 
-    tasksCategories.push(task)
+    tasksCategories.push(tasksCategory)
   })
 
   return tasksCategories
