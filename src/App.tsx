@@ -21,6 +21,9 @@ import SignIn from '@pages/sign-in.tsx'
 import SignUp from '@pages/sign-up.tsx'
 import ForgotPassword from '@pages/forgot-password.tsx'
 
+/* ------------- loader ------------- */
+import { tasksCategoryLoader } from './loaders/tasksCategoryLoader'
+
 /* ------------- helpers ------------ */
 import { changeThemeMode } from '@helpers/changeThemeMode.ts'
 
@@ -36,6 +39,7 @@ const router = createBrowserRouter([
       {
         path: 'tasks',
         element: <Tasks />,
+        loader: tasksCategoryLoader,
         children: [
           {
             path: '',
