@@ -1,6 +1,8 @@
 import { ComponentProps } from 'react'
 import { Task } from '@zod/tasksSchema'
 import { InProgressTaskItem } from '@components/tasks'
+import { Link } from 'react-router-dom'
+import { IoAddCircle } from 'react-icons/io5'
 
 type InProgressTaskListProps = ComponentProps<'ul'> & {
   inProgressTasks: Task[]
@@ -19,9 +21,12 @@ export const InProgressTaskList = ({
             ))}
           </>
         ) : (
-          <li className='brightness-75'>
+          <li className='brightness-75 flex flex-col gap-4'>
             <p>You have no in-progress tasks on this category.</p>
-            <p>Click on the "Add Task" button to add a new task.</p>
+            <Link to='/tasks' className='btn btn-sm btn-success w-fit'>
+              <span className='sm:inline-block hidden'> Create a task</span>
+              <IoAddCircle size='30px' />
+            </Link>
           </li>
         )}
       </ul>
