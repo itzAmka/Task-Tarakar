@@ -23,7 +23,11 @@ import SignUp from '@pages/sign-up.tsx'
 import ForgotPassword from '@pages/forgot-password.tsx'
 
 /* ------------- loader ------------- */
-import { tasksCategoryLoader, inProgressTasksLoader } from './loaders'
+import {
+  tasksCategoryLoader,
+  inProgressTasksLoader,
+  completedTasksLoader,
+} from './loaders'
 
 /* ------------- helpers ------------ */
 import { changeThemeMode } from '@helpers/changeThemeMode.ts'
@@ -56,6 +60,7 @@ const router = createBrowserRouter([
           {
             path: 'completed',
             element: <CompletedTasks />,
+            loader: completedTasksLoader,
           },
         ],
       },

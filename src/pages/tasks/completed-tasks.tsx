@@ -1,6 +1,10 @@
 import { CompletedTaskList } from '@components/tasks'
+import { Task } from '@zod/tasksSchema'
+import { useLoaderData } from 'react-router-dom'
 
 const CompletedTasks = () => {
+  const completedTasks = useLoaderData() as Task[]
+
   return (
     <>
       <section className='flex flex-col gap-10'>
@@ -13,7 +17,7 @@ const CompletedTasks = () => {
           </p>
         </div>
 
-        <CompletedTaskList completedTasks={[]} />
+        <CompletedTaskList completedTasks={completedTasks} />
       </section>
     </>
   )
