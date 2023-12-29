@@ -29,9 +29,11 @@ import {
   completedTasksLoader,
 } from './loaders'
 
+/* ------------- actions ------------ */
+import { completedTasksAction, toggleTaskCompleteAction } from './actions'
+
 /* ------------- helpers ------------ */
 import { changeThemeMode } from '@helpers/changeThemeMode.ts'
-import { toggleTaskCompleteAction } from './actions'
 
 const router = createBrowserRouter([
   {
@@ -61,6 +63,7 @@ const router = createBrowserRouter([
             path: 'completed',
             element: <CompletedTasks />,
             loader: completedTasksLoader,
+            action: completedTasksAction,
           },
         ],
       },
