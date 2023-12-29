@@ -27,6 +27,7 @@ import { tasksCategoryLoader, inProgressTasksLoader } from './loaders'
 
 /* ------------- helpers ------------ */
 import { changeThemeMode } from '@helpers/changeThemeMode.ts'
+import { toggleTaskCompleteAction } from './actions'
 
 const router = createBrowserRouter([
   {
@@ -45,6 +46,7 @@ const router = createBrowserRouter([
       {
         path: 'tasks/:categoryId',
         element: <Tasks />,
+        action: toggleTaskCompleteAction,
         children: [
           {
             path: '',
