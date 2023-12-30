@@ -20,7 +20,9 @@ export const InProgressTaskItem = ({ task }: InProgressTaskItemProps) => {
           <div className='flex items-center gap-2'>
             <Form method='post'>
               <button
-                className='btn btn-sm btn-circle btn-outline'
+                className={`btn btn-sm btn-circle btn-success ${
+                  task.isCompleted ? '' : 'btn-outline'
+                }`}
                 onClick={handleTaskCompletion}
               >
                 <FaCheck />

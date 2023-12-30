@@ -16,17 +16,21 @@ export const CompletedTaskItem = ({ task }: CompletedTaskItemProps) => {
   return (
     <>
       <li className='card bg-neutral text-neutral-content'>
-        <div className='card-body px-4 py-6'>
+        <div className='card-body px-4 py-6 brightness-75'>
           <div className='flex items-center gap-2'>
             <Form method='post'>
               <button
-                className='btn btn-sm btn-circle btn-outline'
+                className={`btn btn-sm btn-circle btn-success ${
+                  task.isCompleted ? '' : 'btn-outline'
+                }`}
                 onClick={handleTaskCompletion}
               >
                 <FaCheck />
               </button>
             </Form>
-            <p>{task.title}</p>
+            <p className={`${task.isCompleted ? 'line-through' : ''}`}>
+              {task.title}
+            </p>
           </div>
         </div>
       </li>
