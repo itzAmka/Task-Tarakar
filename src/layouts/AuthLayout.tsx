@@ -1,4 +1,4 @@
-import UnAuthenticatedRoutes from '@components/UnAuthenticatedRoutes'
+import { UnAuthenticatedRoutes } from '@components/protect'
 import Container from '@components/shared/Container'
 import { Outlet } from 'react-router-dom'
 

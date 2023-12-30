@@ -5,7 +5,9 @@ import { ComponentProps } from 'react'
 
 type UnAuthenticatedRoutesProps = ComponentProps<'div'>
 
-const UnAuthenticatedRoutes = ({ children }: UnAuthenticatedRoutesProps) => {
+export const UnAuthenticatedRoutes = ({
+  children,
+}: UnAuthenticatedRoutesProps) => {
   const { isLoggedIn, loading } = useAuth()
 
   const location = useLocation()
@@ -22,5 +24,3 @@ const UnAuthenticatedRoutes = ({ children }: UnAuthenticatedRoutesProps) => {
     return children
   }
 }
-
-export default UnAuthenticatedRoutes
