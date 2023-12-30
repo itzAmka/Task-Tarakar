@@ -1,4 +1,6 @@
 import { ComponentProps } from 'react'
+import { IoAddCircle } from 'react-icons/io5'
+import { FaTasks } from 'react-icons/fa'
 import { Link } from 'react-router-dom'
 
 export type TCategory = {
@@ -28,8 +30,16 @@ export const TaskCategoryItem = ({ category }: TaskCategoryItemProps) => {
           </div>
 
           <div className='card-actions'>
-            <Link to={`/tasks/${category.id}`} className='btn btn-primary'>
-              See tasks
+            <Link to={`/tasks/${category.id}`} className='btn btn-secondary'>
+              <span className='sm:inline-block hidden'>See Tasks</span>
+              <FaTasks />
+            </Link>
+            <Link
+              to={`/tasks/${category.id}/create-task`}
+              className='btn btn-primary'
+            >
+              <span className='sm:inline-block hidden'>New Task</span>
+              <IoAddCircle size='30px' />
             </Link>
           </div>
         </div>
