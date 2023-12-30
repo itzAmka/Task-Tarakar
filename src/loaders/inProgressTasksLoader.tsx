@@ -3,11 +3,11 @@ import { type LoaderFunction, redirect } from 'react-router-dom'
 import { db, auth } from '@config/firebase.config'
 import { Task } from '@zod/tasksSchema'
 
-export const inProgressTasksLoader: LoaderFunction<Task[]> = async (): Promise<
-  Task[]
-> => {
+export const inProgressTasksLoader: LoaderFunction<Task[]> = async ({
+  params,
+}): Promise<Task[]> => {
   if (!auth.currentUser) {
-    throw redirect('/sign-in')
+    throw redirect(`/sign-in?redirectTo=/tasks/${params.categoryId}`)
   }
 
   const tasksColRef = collection(db, 'tasks')

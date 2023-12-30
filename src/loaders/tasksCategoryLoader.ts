@@ -7,7 +7,7 @@ export const tasksCategoryLoader: LoaderFunction<
   Category[]
 > = async (): Promise<Category[]> => {
   if (!auth.currentUser) {
-    throw redirect('/sign-in')
+    throw redirect('/sign-in?redirectTo=/tasks')
   }
 
   const categoriesColRef = collection(db, 'categories')

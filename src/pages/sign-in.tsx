@@ -1,5 +1,5 @@
 import { type ChangeEvent, type FormEvent, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useSearchParams } from 'react-router-dom'
 import { BsEyeFill, BsEyeSlashFill } from 'react-icons/bs'
 import { MdEmail } from 'react-icons/md'
 import { RiLockPasswordFill } from 'react-icons/ri'
@@ -9,6 +9,7 @@ import GoogleOAuth from '@components/GoogleOAuth'
 import { auth } from '@config/firebase.config'
 
 const SignIn = () => {
+  let [searchParams] = useSearchParams()
   const [showPassword, setShowPassword] = useState(false)
   const [formData, setFormData] = useState({
     name: '',
@@ -17,6 +18,8 @@ const SignIn = () => {
   })
 
   const navigate = useNavigate()
+
+  const redirectTo = searchParams.get('redirectTo')
 
   const { name, email, password } = formData
 
@@ -49,6 +52,9 @@ const SignIn = () => {
 
         if (user) {
           setFormData({ name: '', email: '', password: '' })
+
+          if (redirectTo) return navigate(redirectTo)
+
           navigate('/')
         }
       } catch (error) {
