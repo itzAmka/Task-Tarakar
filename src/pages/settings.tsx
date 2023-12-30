@@ -26,7 +26,8 @@ const Settings = () => {
         <h2 className='text-3xl text-slate-400 mb-4'>About</h2>
         <div className='divider'></div>
         <p>
-          Task tracker app, powered by ReactJS and Firebase, provides a simple,
+          <span className='text-primary font-semibold'>Task Takarak</span> is a
+          Task Tracker app, powered by ReactJS and Firebase, provides a simple,
           efficient way to manage your tasks. With its user-friendly interface
           and real-time updates, it keeps your daily to-dos organized and on
           track, ensuring productivity and clarity in your personal and
@@ -51,55 +52,55 @@ const Settings = () => {
           {/* social links */}
           <div className='mt-4'>
             <h2>Follow me on:</h2>
-            <div className='flex gap-4 mt-2'>
+            <div className='flex flex-wrap gap-2 mt-2'>
               {/* github */}
               <a
-                className='btn btn-neutral'
+                className='btn btn-neutral gap-2'
                 href='https://github.com/itzAmka'
                 target='_blank'
                 rel='noopener noreferrer'
               >
                 Github
-                <FaGithub size={20} className='ml-2' />
+                <FaGithub size={20} />
               </a>
 
               {/* linkedIn */}
               <a
-                className='btn btn-neutral'
+                className='btn btn-neutral gap-2'
                 href='https://www.linkedin.com/in/amin-hassen-405715/'
                 target='_blank'
                 rel='noopener noreferrer'
               >
                 LinkedIn
-                <FaLinkedinIn size={20} className='ml-2' />
+                <FaLinkedinIn size={20} />
               </a>
 
               {/* twitter */}
               <a
-                className='btn btn-neutral'
+                className='btn btn-neutral gap-2'
                 href='https://twitter.com/itzAmka'
                 target='_blank'
                 rel='noopener noreferrer'
               >
                 Twitter
-                <FaXTwitter size={20} className='ml-2' />
+                <FaXTwitter size={20} />
               </a>
             </div>
           </div>
         </div>
       </section>
-      <section className='text-center mt-10 flex justify-center gap-4 sm:flex-row flex-col'>
-        <Link to='/'>
-          <button className='btn btn-secondary btn-wide'>
-            <RiArrowGoBackFill size={18} />
-            <span className='ml-2'>Go Back To Home</span>
-          </button>
+      <section className='text-center mt-10 flex justify-center items-center sm:gap-4 gap-6 flex-row flex-wrap'>
+        <Link to='/' className='btn btn-secondary sm:btn-wide w-full gap-3'>
+          <RiArrowGoBackFill size={18} />
+          <span>Go Back To Home</span>
         </Link>
-        <Link to='/sign-in' onClick={handleLogout}>
-          <button className='btn btn-error btn-wide'>
-            <BiLogOut size={20} />
-            <span className='ml-2'>Logout</span>
-          </button>
+        <Link
+          to='/sign-in'
+          onClick={handleLogout}
+          className='btn btn-error sm:btn-wide w-full gap-3'
+        >
+          <BiLogOut size={20} />
+          <span>Logout</span>
         </Link>
       </section>
     </div>
