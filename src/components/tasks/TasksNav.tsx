@@ -1,6 +1,6 @@
 import { ComponentProps } from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import { IoTimer } from 'react-icons/io5'
+import { IoAddCircle, IoTimer } from 'react-icons/io5'
 import { IoIosCheckmarkCircle } from 'react-icons/io'
 
 type TasksNavProps = ComponentProps<'div'> & {
@@ -13,6 +13,17 @@ export const TasksNav = ({ categoryId }: TasksNavProps) => {
   return (
     <nav className='flex items-center justify-center'>
       <ul className='menu menu-horizontal justify-center gap-2 border-b border-b-neutral-500'>
+        <li className='sm:w-fit w-full'>
+          <Link
+            to={`/tasks/${categoryId}/create-task`}
+            className={`${
+              location.pathname === `/tasks/${categoryId}` ? 'active' : ''
+            }`}
+          >
+            <IoAddCircle />
+            <span>New Task</span>
+          </Link>
+        </li>
         <li className='sm:w-fit w-full'>
           <Link
             to={`/tasks/${categoryId}`}
