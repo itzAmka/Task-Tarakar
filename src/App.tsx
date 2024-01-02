@@ -34,6 +34,7 @@ import { completedTasksAction, toggleTaskCompleteAction } from './actions'
 
 /* ------------- helpers ------------ */
 import { changeThemeMode } from '@helpers/changeThemeMode.ts'
+import CreateTask from '@pages/tasks/create-task'
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
             element: <CompletedTasks />,
             loader: completedTasksLoader,
             action: completedTasksAction,
+          },
+          {
+            path: 'create-task',
+            element: <CreateTask />,
           },
         ],
       },
