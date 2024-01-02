@@ -23,8 +23,15 @@ export const createTask = async (title: string, categoryId: string) => {
   try {
     const createdTask = await addDoc(taskColRef, newTask)
 
+    console.log(createdTask)
+
     if (!createdTask) {
       throw new Error('Failed to create task')
+    }
+
+    return {
+      ok: true,
+      message: 'Task created successfully',
     }
   } catch (err) {
     console.log(err)
