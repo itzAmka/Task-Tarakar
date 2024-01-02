@@ -3,6 +3,7 @@ import { Form } from 'react-router-dom'
 import { FaCheck } from 'react-icons/fa'
 import { Task } from '@zod/tasksSchema'
 import { toggleTaskComplete } from '@helpers/tasks'
+import { DeleteTaskButton } from './DeleteTaskButton'
 
 type InProgressTaskItemProps = ComponentProps<'ul'> & {
   task: Task
@@ -29,6 +30,7 @@ export const InProgressTaskItem = ({ task }: InProgressTaskItemProps) => {
               </button>
             </Form>
             <p>{task.title}</p>
+            <DeleteTaskButton taskId={task.id} />
           </div>
         </div>
       </li>
