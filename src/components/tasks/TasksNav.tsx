@@ -17,7 +17,9 @@ export const TasksNav = ({ categoryId }: TasksNavProps) => {
           <Link
             to={`/tasks/${categoryId}/create-task`}
             className={`${
-              location.pathname === `/tasks/${categoryId}` ? 'active' : ''
+              location.pathname === `/tasks/${categoryId}/create-task`
+                ? 'active'
+                : ''
             }`}
           >
             <IoAddCircle />
