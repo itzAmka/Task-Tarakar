@@ -17,6 +17,7 @@ export const completedTasksLoader: LoaderFunction<Task[]> = async ({
     orderBy('updatedAt', 'desc'),
     where('isCompleted', '==', true),
     where('userRef', '==', auth.currentUser?.uid),
+    where('categoryRef', '==', params.categoryId),
   )
 
   const querySnapshot = await getDocs(tasksQuery)
