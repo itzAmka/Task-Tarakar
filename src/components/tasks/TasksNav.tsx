@@ -1,4 +1,4 @@
-import { ComponentProps } from 'react'
+import { type ComponentProps } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { IoAddCircle, IoTimer } from 'react-icons/io5'
 import { IoIosCheckmarkCircle } from 'react-icons/io'

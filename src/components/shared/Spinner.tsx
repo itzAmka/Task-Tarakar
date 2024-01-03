@@ -1,10 +1,10 @@
-import { ComponentProps } from 'react'
+import { type ComponentProps } from 'react'
 
 type SpinnerProps = ComponentProps<'div'> & {
   bgColor?: string
 }
 
-const Spinner = ({ bgColor }: SpinnerProps) => {
+export const Spinner = ({ bgColor }: SpinnerProps) => {
   return (
     <div className='h-full grid place-items-center mt-12'>
       <div
@@ -17,5 +17,3 @@ const Spinner = ({ bgColor }: SpinnerProps) => {
     </div>
   )
 }
-
-export default Spinner

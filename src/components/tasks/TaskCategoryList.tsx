@@ -1,6 +1,7 @@
+import { type ComponentProps } from 'react'
+
+import { type Category } from '@zod/categoriesSchema'
 import { TaskCategoryItem } from '@components/tasks'
-import { Category } from '@zod/categoriesSchema'
-import { ComponentProps } from 'react'
 
 type TaskCategoryListProps = ComponentProps<'div'> & {
   tasksCategories: Category[]

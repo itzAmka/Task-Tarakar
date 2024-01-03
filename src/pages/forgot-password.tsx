@@ -1,8 +1,9 @@
 import { type ChangeEvent, type FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { MdEmail } from 'react-icons/md'
-import { sendPasswordResetEmail } from 'firebase/auth'
 import { toast } from 'react-toastify'
+import { sendPasswordResetEmail } from 'firebase/auth'
+
 import { auth } from '@config/firebase.config'
 
 const ForgotPassword = () => {

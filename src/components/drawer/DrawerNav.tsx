@@ -1,5 +1,6 @@
 import { FaBars } from 'react-icons/fa'
-import Logo from '@components/shared/Logo'
+
+import { Logo } from '@components/shared'
 
 export const DrawerNav = () => {
   return (

@@ -1,6 +1,7 @@
+import { useLoaderData } from 'react-router-dom'
+
 import { CompletedTaskList } from '@components/tasks'
 import { Task } from '@zod/tasksSchema'
-import { useLoaderData } from 'react-router-dom'
 
 const CompletedTasks = () => {
   const completedTasks = useLoaderData() as Task[]

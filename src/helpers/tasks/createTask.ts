@@ -1,5 +1,6 @@
-import { auth, db } from '@config/firebase.config'
 import { addDoc, collection, serverTimestamp } from 'firebase/firestore'
+
+import { auth, db } from '@config/firebase.config'
 
 export const createTask = async (title: string, categoryId: string) => {
   if (!title || !categoryId) {

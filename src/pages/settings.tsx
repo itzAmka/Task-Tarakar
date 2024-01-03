@@ -4,6 +4,7 @@ import { BiLogOut } from 'react-icons/bi'
 import { FaXTwitter } from 'react-icons/fa6'
 import { FaGithub, FaLinkedinIn } from 'react-icons/fa'
 import { signOut } from 'firebase/auth'
+
 import { auth } from '@config/firebase.config'
 import ThemeOptions from '@components/ThemeOptions'
 

@@ -3,7 +3,8 @@ import { useRevalidator } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { FaEdit } from 'react-icons/fa'
 import { FaXmark } from 'react-icons/fa6'
-import { Task } from '@zod/tasksSchema'
+
+import { type Task } from '@zod/tasksSchema'
 import { updateTask } from '@helpers/tasks'
 
 type UpdateTaskProps = ComponentProps<'div'> & {

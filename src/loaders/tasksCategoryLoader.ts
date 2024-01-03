@@ -1,5 +1,6 @@
 import { collection, getDocs, query, orderBy } from 'firebase/firestore'
 import { type LoaderFunction, redirect } from 'react-router-dom'
+
 import { auth, db } from '@config/firebase.config'
 import { type Category } from '@zod/categoriesSchema'
 

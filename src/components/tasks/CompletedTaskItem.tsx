@@ -1,7 +1,8 @@
 import { type ComponentProps } from 'react'
 import { Form } from 'react-router-dom'
 import { FaCheck } from 'react-icons/fa'
-import { Task } from '@zod/tasksSchema'
+
+import { type Task } from '@zod/tasksSchema'
 import { toggleTaskComplete } from '@helpers/tasks'
 import { DeleteTaskButton } from '@components/tasks'
 

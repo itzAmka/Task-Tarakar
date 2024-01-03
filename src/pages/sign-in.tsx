@@ -5,6 +5,7 @@ import { MdEmail } from 'react-icons/md'
 import { RiLockPasswordFill } from 'react-icons/ri'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { toast } from 'react-toastify'
+
 import GoogleOAuth from '@components/GoogleOAuth'
 import { auth } from '@config/firebase.config'
 

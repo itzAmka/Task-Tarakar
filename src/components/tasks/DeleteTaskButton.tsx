@@ -3,7 +3,8 @@ import { useRevalidator } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { MdDelete } from 'react-icons/md'
 import { FaXmark } from 'react-icons/fa6'
-import { deleteTask } from '@helpers/tasks/deleteTask'
+
+import { deleteTask } from '@helpers/tasks'
 
 type DeleteTaskButtonProps = ComponentProps<'div'> & {
   taskId: string

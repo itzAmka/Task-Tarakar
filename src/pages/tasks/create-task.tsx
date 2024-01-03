@@ -1,7 +1,8 @@
-import { FormEvent, KeyboardEvent, useEffect, useRef } from 'react'
+import { type FormEvent, type KeyboardEvent, useEffect, useRef } from 'react'
 import { Form, Link, useLocation } from 'react-router-dom'
-import { goBack } from '@helpers/index'
 import { toast } from 'react-toastify'
+
+import { goBack } from '@helpers/index'
 import { createTask } from '@helpers/tasks'
 
 const CreateTask = () => {

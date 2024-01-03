@@ -6,6 +6,7 @@ import { AiOutlineHome } from 'react-icons/ai'
 import { BiLogIn, BiLogOut } from 'react-icons/bi'
 import { MdAssignmentInd } from 'react-icons/md'
 import { signOut } from 'firebase/auth'
+
 import { useAuth } from '@hooks/useAuth'
 import { auth } from '@config/firebase.config'
 

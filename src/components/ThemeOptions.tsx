@@ -1,4 +1,5 @@
 import { ChangeEvent, useEffect } from 'react'
+
 import { setCurrentTheme } from '@helpers/index'
 import { useLocalStorage } from '@hooks/index'
 

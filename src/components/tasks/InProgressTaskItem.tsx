@@ -1,10 +1,10 @@
 import { type ComponentProps } from 'react'
 import { Form } from 'react-router-dom'
 import { FaCheck } from 'react-icons/fa'
+
 import { Task } from '@zod/tasksSchema'
 import { toggleTaskComplete } from '@helpers/tasks'
-import { DeleteTaskButton } from '@components/tasks'
-import { UpdateTask } from './UpdateTask'
+import { DeleteTaskButton, UpdateTask } from '@components/tasks'
 
 type InProgressTaskItemProps = ComponentProps<'ul'> & {
   task: Task

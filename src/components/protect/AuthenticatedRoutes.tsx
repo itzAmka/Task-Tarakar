@@ -1,7 +1,8 @@
+import { type ComponentProps } from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
-import { useAuth } from '@hooks/useAuth'
-import Spinner from '@components/shared/Spinner'
-import { ComponentProps } from 'react'
+
+import { useAuth } from '@hooks/index'
+import { Spinner } from '@components/shared'
 
 type AuthenticatedRoutesProps = ComponentProps<'div'>
 

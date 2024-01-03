@@ -1,7 +1,7 @@
-import { ComponentProps } from 'react'
+import { type ComponentProps } from 'react'
+import { Link } from 'react-router-dom'
 import { IoAddCircle } from 'react-icons/io5'
 import { FaTasks } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
 
 export type TCategory = {
   id: string

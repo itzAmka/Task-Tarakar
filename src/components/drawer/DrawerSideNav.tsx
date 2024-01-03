@@ -2,7 +2,8 @@ import { type ComponentProps } from 'react'
 import { NavLink } from 'react-router-dom'
 import { FaTasks } from 'react-icons/fa'
 import { FaGauge, FaGear } from 'react-icons/fa6'
-import Logo from '@components/shared/Logo'
+
+import { Logo } from '@components/shared'
 
 type DrawerSideNavProps = ComponentProps<'div'> & {
   closeDrawer?: () => void

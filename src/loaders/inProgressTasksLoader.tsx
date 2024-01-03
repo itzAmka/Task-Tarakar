@@ -1,7 +1,8 @@
 import { collection, getDocs, query, orderBy, where } from 'firebase/firestore'
 import { type LoaderFunction, redirect } from 'react-router-dom'
+
 import { db, auth } from '@config/firebase.config'
-import { Task } from '@zod/tasksSchema'
+import { type Task } from '@zod/tasksSchema'
 
 export const inProgressTasksLoader: LoaderFunction<Task[]> = async ({
   params,

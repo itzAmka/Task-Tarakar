@@ -5,7 +5,7 @@ type LogoProps = ComponentProps<'div'> & {
   closeDrawer?: () => void
 }
 
-const Logo = ({ closeDrawer }: LogoProps) => {
+export const Logo = ({ closeDrawer }: LogoProps) => {
   return (
     <>
       <Link to='/' className='btn btn-ghost' onClick={closeDrawer}>
@@ -16,5 +16,3 @@ const Logo = ({ closeDrawer }: LogoProps) => {
     </>
   )
 }
-
-export default Logo

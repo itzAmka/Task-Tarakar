@@ -1,8 +1,9 @@
-import { ComponentProps } from 'react'
-import { Task } from '@zod/tasksSchema'
-import { CompletedTaskItem } from '@components/tasks'
+import { type ComponentProps } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { IoAddCircle } from 'react-icons/io5'
+
+import { type Task } from '@zod/tasksSchema'
+import { CompletedTaskItem } from '@components/tasks'
 
 type CompletedTaskListProps = ComponentProps<'ul'> & {
   completedTasks: Task[]

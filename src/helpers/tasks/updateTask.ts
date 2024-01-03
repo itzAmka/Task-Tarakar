@@ -1,5 +1,6 @@
-import { db } from '@config/firebase.config'
 import { doc, updateDoc } from 'firebase/firestore'
+
+import { db } from '@config/firebase.config'
 
 export const updateTask = async (
   taskId: string,

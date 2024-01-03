@@ -6,6 +6,7 @@ import { RiLockPasswordFill } from 'react-icons/ri'
 import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
 import { toast } from 'react-toastify'
+
 import { db, auth } from '@config/firebase.config'
 import GoogleOAuth from '@components/GoogleOAuth'
 

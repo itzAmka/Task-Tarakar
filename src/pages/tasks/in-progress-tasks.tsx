@@ -1,5 +1,6 @@
 import { useLoaderData } from 'react-router-dom'
-import { Task } from '@zod/tasksSchema'
+
+import { type Task } from '@zod/tasksSchema'
 import { InProgressTaskList } from '@components/tasks'
 
 const InProgressTasks = () => {

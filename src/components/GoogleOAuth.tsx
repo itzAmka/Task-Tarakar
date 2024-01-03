@@ -1,7 +1,8 @@
 import { useLocation, useNavigate } from 'react-router-dom'
-import { FcGoogle } from 'react-icons/fc'
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
+import { FcGoogle } from 'react-icons/fc'
+
 import { db, auth } from '@config/firebase.config'
 
 const GoogleOAuth = () => {
