@@ -3,7 +3,7 @@ import { Form } from 'react-router-dom'
 import { FaCheck } from 'react-icons/fa'
 import { Task } from '@zod/tasksSchema'
 import { toggleTaskComplete } from '@helpers/tasks'
-import { DeleteTaskButton } from './DeleteTaskButton'
+import { DeleteTaskButton } from '@components/tasks'
 
 type CompletedTaskItemProps = ComponentProps<'ul'> & {
   task: Task
