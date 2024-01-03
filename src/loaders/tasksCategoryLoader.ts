@@ -14,7 +14,11 @@ export const tasksCategoryLoader: LoaderFunction<
 
   let tasksCategories: Category[] = []
 
-  const tasksCategoriesQuery = query(categoriesColRef, orderBy('createdAt'))
+  const tasksCategoriesQuery = query(
+    categoriesColRef,
+    orderBy('updatedAt', 'asc'),
+    orderBy('title', 'asc'),
+  )
 
   const querySnapshot = await getDocs(tasksCategoriesQuery)
 
