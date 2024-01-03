@@ -106,7 +106,7 @@ const CreateTask = () => {
                 <input
                   type='text'
                   placeholder='Type here'
-                  className='input input-bordered input-secondary w-full sm:max-w-xs'
+                  className='input input-bordered input-primary w-full'
                   name='title'
                   ref={titleInputRef}
                 />
@@ -115,7 +115,7 @@ const CreateTask = () => {
 
               <div className='flex flex-col gap-4'>
                 <button
-                  className='btn btn-warning w-full'
+                  className='btn btn-warning btn-outline w-full'
                   type='button'
                   onClick={goBack}
                 >
@@ -124,7 +124,7 @@ const CreateTask = () => {
                 {categoryId && (
                   <Link
                     to={`/tasks/${categoryId}`}
-                    className='btn btn-primary w-full'
+                    className='btn btn-primary btn-outline w-full'
                   >
                     See all tasks
                   </Link>
