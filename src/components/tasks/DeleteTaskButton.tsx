@@ -44,8 +44,8 @@ export const DeleteTaskButton = ({ taskId }: DeleteTaskButtonProps) => {
 
   return (
     <div>
-      <button className='btn btn-circle' onClick={handleShowModal}>
-        <MdDelete size='25px' />
+      <button onClick={handleShowModal}>
+        <MdDelete size='25px' className='text-error' />
       </button>
 
       <dialog id='my_modal_3' className='modal' ref={modalRef}>

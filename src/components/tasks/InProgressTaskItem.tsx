@@ -4,6 +4,7 @@ import { FaCheck } from 'react-icons/fa'
 import { Task } from '@zod/tasksSchema'
 import { toggleTaskComplete } from '@helpers/tasks'
 import { DeleteTaskButton } from '@components/tasks'
+import { UpdateTask } from './UpdateTask'
 
 type InProgressTaskItemProps = ComponentProps<'ul'> & {
   task: Task
@@ -30,7 +31,10 @@ export const InProgressTaskItem = ({ task }: InProgressTaskItemProps) => {
               </button>
             </Form>
             <p>{task.title}</p>
-            <DeleteTaskButton taskId={task.id} />
+            <div className='flex items-center justify-center gap-2'>
+              <UpdateTask task={task} />
+              <DeleteTaskButton taskId={task.id} />
+            </div>
           </div>
         </div>
       </li>
