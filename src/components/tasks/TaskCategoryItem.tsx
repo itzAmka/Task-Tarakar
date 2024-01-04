@@ -2,6 +2,7 @@ import { type ComponentProps } from 'react'
 import { Link } from 'react-router-dom'
 import { IoAddCircle } from 'react-icons/io5'
 import { FaTasks } from 'react-icons/fa'
+import { TotalTasksInCategoryItem } from '.'
 
 export type TCategory = {
   id: string
@@ -26,7 +27,7 @@ export const TaskCategoryItem = ({ category }: TaskCategoryItemProps) => {
               <h4 className='card-title'>{category.title}</h4>
               <p>{category.description}</p>
             </div>
-            <span className='badge badge-outline'>50 tasks</span>
+            <TotalTasksInCategoryItem categoryId={category.id} />
           </div>
 
           <div className='card-actions'>
