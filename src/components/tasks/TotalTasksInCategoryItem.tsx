@@ -1,4 +1,5 @@
 import { useState, type ComponentProps, useEffect } from 'react'
+
 import { getTasksTotalByCategoryId } from '@helpers/tasks'
 
 type TotalTasksInCategoryItemProps = ComponentProps<'span'> & {

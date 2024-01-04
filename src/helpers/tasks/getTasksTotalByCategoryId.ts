@@ -1,4 +1,4 @@
-import { auth, db } from '@config/firebase.config'
+import { redirect } from 'react-router-dom'
 import {
   collection,
   getCountFromServer,
@@ -6,7 +6,8 @@ import {
   query,
   where,
 } from 'firebase/firestore'
-import { redirect } from 'react-router-dom'
+
+import { auth, db } from '@config/firebase.config'
 
 export const getTasksTotalByCategoryId = async (
   categoryId: string,
