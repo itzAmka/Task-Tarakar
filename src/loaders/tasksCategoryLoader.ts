@@ -1,8 +1,8 @@
-import { collection, getDocs, query, orderBy } from 'firebase/firestore'
 import { type LoaderFunction, redirect } from 'react-router-dom'
 
-import { auth, db } from '@config/firebase.config'
+import { auth } from '@config/firebase.config'
 import { type Category } from '@zod/categoriesSchema'
+import { getTasksCategory } from '@helpers/tasks'
 
 export const tasksCategoryLoader: LoaderFunction<
   Category[]
@@ -11,30 +11,7 @@ export const tasksCategoryLoader: LoaderFunction<
     throw redirect('/sign-in?redirectTo=/tasks')
   }
 
-  const categoriesColRef = collection(db, 'categories')
-
-  let tasksCategories: Category[] = []
-
-  const tasksCategoriesQuery = query(
-    categoriesColRef,
-    orderBy('updatedAt', 'asc'),
-    orderBy('title', 'asc'),
-  )
-
-  const querySnapshot = await getDocs(tasksCategoriesQuery)
-
-  querySnapshot.forEach((doc) => {
-    const tasksCategory: Category = {
-      id: doc.id,
-      title: doc.data().title,
-      description: doc.data().description,
-      color: doc.data().color,
-      createdAt: doc.data().createdAt,
-      updatedAt: doc.data().updatedAt,
-    }
-
-    tasksCategories.push(tasksCategory)
-  })
+  const tasksCategories: Category[] = await getTasksCategory()
 
   return tasksCategories
 }
