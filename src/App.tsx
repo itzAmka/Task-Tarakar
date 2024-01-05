@@ -17,6 +17,7 @@ import Tasks from '@pages/tasks/tasks.tsx'
 import TasksCategory from '@pages/tasks/tasks-category.tsx'
 import CompletedTasks from '@pages/tasks/completed-tasks.tsx'
 import InProgressTasks from '@pages/tasks/in-progress-tasks.tsx'
+import CreateTask from '@pages/tasks/create-task'
 import Settings from '@pages/settings.tsx'
 import SignIn from '@pages/sign-in.tsx'
 import SignUp from '@pages/sign-up.tsx'
@@ -27,6 +28,7 @@ import {
   tasksCategoryLoader,
   inProgressTasksLoader,
   completedTasksLoader,
+  dashboardReportsLoader,
 } from './loaders'
 
 /* ------------- actions ------------ */
@@ -34,7 +36,6 @@ import { completedTasksAction, toggleTaskCompleteAction } from './actions'
 
 /* ------------- helpers ------------ */
 import { changeThemeMode } from '@helpers/changeThemeMode.ts'
-import CreateTask from '@pages/tasks/create-task'
 
 const router = createBrowserRouter([
   {
@@ -44,6 +45,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Dashboard />,
+        loader: dashboardReportsLoader,
       },
       {
         path: 'tasks',
