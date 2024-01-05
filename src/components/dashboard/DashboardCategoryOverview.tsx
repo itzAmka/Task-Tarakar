@@ -1,4 +1,14 @@
-export const DashboardCategoryOverview = () => {
+import { type ComponentProps } from 'react'
+import { type Category } from '@zod/categoriesSchema'
+import { TotalTasksInCategoryItem } from '@components/tasks'
+
+type DashboardCategoryOverviewProps = ComponentProps<'section'> & {
+  tasksCategories: Category[]
+}
+
+export const DashboardCategoryOverview = ({
+  tasksCategories = [],
+}: DashboardCategoryOverviewProps) => {
   return (
     <>
       <section className='card flex flex-col gap-6 bg-neutral text-neutral-content p-4'>
@@ -15,22 +25,26 @@ export const DashboardCategoryOverview = () => {
             <thead>
               <tr className='text-neutral-content '>
                 <th>Categories</th>
-                <th>Number of Categories</th>
+                <th>Number of Tasks</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Personal</td>
-                <td>10</td>
-              </tr>
-              <tr className='bg-primary'>
-                <td>Work</td>
-                <td>35</td>
-              </tr>
-              <tr>
-                <td>Others</td>
-                <td>15</td>
-              </tr>
+              {tasksCategories.length > 0 ? (
+                tasksCategories.map((category) => (
+                  <tr key={category.id}>
+                    <td>{category.title}</td>
+                    <td>
+                      <TotalTasksInCategoryItem categoryId={category.id} />
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan={2} className='text-primary'>
+                    Could not find any categories.
+                  </td>
+                </tr>
+              )}
             </tbody>
           </table>
         </div>
