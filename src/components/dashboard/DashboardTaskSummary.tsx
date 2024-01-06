@@ -1,4 +1,20 @@
-export const DashboardTaskSummary = () => {
+import { type ComponentProps } from 'react'
+
+import { TasksCompleted } from 'src/loaders'
+
+type DashboardTaskSummaryProps = ComponentProps<'section'> & {
+  tasksCompleted: TasksCompleted
+}
+
+export const DashboardTaskSummary = ({
+  tasksCompleted,
+}: DashboardTaskSummaryProps) => {
+  const {
+    todayCompletedTasksCount,
+    weekCompletedTasksCount,
+    monthCompletedTasksCount,
+  } = tasksCompleted
+
   return (
     <>
       <section className='flex flex-col gap-6'>
@@ -11,17 +27,23 @@ export const DashboardTaskSummary = () => {
 
         <div className='grid sm:grid-cols-2 grid-cols-1 gap-4'>
           <div className='card text-center sm:items-start items-center gap-1 p-4 bg-neutral text-neutral-content'>
-            <h4 className='text-4xl font-bold'>10</h4>
+            <h4 className='text-4xl font-bold'>
+              {todayCompletedTasksCount.count}
+            </h4>
             <p className='text-sm font-semibold'>Tasks completed today</p>
           </div>
 
           <div className='card text-center sm:items-start items-center gap-1 p-4 bg-neutral text-neutral-content'>
-            <h4 className='text-4xl font-bold'>20</h4>
+            <h4 className='text-4xl font-bold'>
+              {weekCompletedTasksCount.count}
+            </h4>
             <p className='text-sm font-semibold'>Tasks completed this week</p>
           </div>
 
           <div className='card text-center sm:items-start items-center gap-1 p-4 bg-neutral text-neutral-content'>
-            <h4 className='text-4xl font-bold'>30</h4>
+            <h4 className='text-4xl font-bold'>
+              {monthCompletedTasksCount.count}
+            </h4>
             <p className='text-sm font-semibold'>Tasks completed this month</p>
           </div>
         </div>

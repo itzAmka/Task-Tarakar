@@ -5,17 +5,17 @@ import {
   DashboardTaskSummary,
   DashboardCategoryOverview,
 } from '@components/dashboard'
-import { type Category } from '@zod/categoriesSchema'
+import { type DashboardReportsLoaderResult } from 'src/loaders'
 
 const Dashboard = () => {
-  // TODO: add type to useLoaderData
-  const { tasksCategories } = useLoaderData() as { tasksCategories: Category[] }
+  const { tasksCategories, tasksCompleted } =
+    useLoaderData() as DashboardReportsLoaderResult
 
   return (
     <section className='flex flex-col gap-16'>
       <DashboardHeader />
 
-      <DashboardTaskSummary />
+      <DashboardTaskSummary tasksCompleted={tasksCompleted} />
 
       <DashboardCategoryOverview tasksCategories={tasksCategories} />
     </section>
