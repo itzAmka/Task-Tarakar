@@ -19,7 +19,13 @@ const Navbar = () => {
   }
 
   const closeSidebar = () => {
-    setSidebarOpen((prevState) => (prevState = false))
+    setSidebarOpen((prevState) => {
+      if (prevState) {
+        return (prevState = false)
+      }
+
+      return prevState
+    })
   }
 
   const handleLogout = async () => {
