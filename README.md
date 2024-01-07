@@ -1,4 +1,4 @@
-# [Todos-Manager](https://todos-manager-amkae.vercel.app/)
+# [Task Tarakar](https://task-tarakar.vercel.app)
 
 Task Tarakar is a web app that manges your daily task
 
@@ -29,5 +29,5 @@ Task Tarakar is a web app that manges your daily task
 
 ## Author
 
-- GitHub - [AmkaE](https://github.com/AmkaE)
-- Website - [Portfolio](https://www.aminamka.com/)
+- GitHub - [itzAmka](https://github.com/itzAmka)
+- Website - [Portfolio](https://www.amka.dev)
